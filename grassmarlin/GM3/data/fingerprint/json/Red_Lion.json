@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Red Lion",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Red Lion traffic running the CrimsonV3 software for HMI."
+    },
+    "Filter": {
+      "@For": "Red Lion CrimsonV3",
+      "@Name": "CrimsonV3",
+      "display_filter": "dst port 789"
+    },
+    "Payload": {
+      "@For": "Red Lion CrimsonV3",
+      "Description": "Red Lion traffic running the CrimsonV3 software for HMI.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "HMI",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Red Lion CrimsonV3"
+            }
+          }
+        }
+      }
+    }
+  }
+}

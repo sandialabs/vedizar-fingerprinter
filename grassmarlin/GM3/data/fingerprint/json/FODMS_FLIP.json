@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "FODMS FLIP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of FODMS FLIP traffic."
+    },
+    "Filter": {
+      "@For": "FODMS FLIP",
+      "@Name": "source.port",
+      "display_filter": "src port 7200"
+    },
+    "Payload": {
+      "@For": "FODMS FLIP",
+      "Description": "Fiber optics multiplexing service as per RFC 822",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "FODMS FLIP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

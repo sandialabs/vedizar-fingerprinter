@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "SAIA S-BUS",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of SAIA S-BUS traffic."
+    },
+    "Filter": {
+      "@For": "SAIA",
+      "@Name": "S-BUS",
+      "display_filter": "dst port 5050"
+    },
+    "Payload": {
+      "@For": "SAIA",
+      "Description": "Communication Protocol between PDC and PLC by Saia-Burgess Controls.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Product",
+              "#text": "SAIA"
+            }
+          }
+        }
+      }
+    }
+  }
+}

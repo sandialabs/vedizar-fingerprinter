@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Danfoss",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Danfoss ECL Alex traffic."
+    },
+    "Filter": {
+      "@For": "Danfoss ECL Apex",
+      "@Name": "ECL Apex",
+      "display_filter": "dst port 5050"
+    },
+    "Payload": {
+      "@For": "Danfoss ECL Apex",
+      "Description": "High performance PLC runtime engine desinged to run both embedded and PC applications",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Danfoss ECL Apex"
+            }
+          }
+        }
+      }
+    }
+  }
+}

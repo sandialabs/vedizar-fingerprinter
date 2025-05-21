@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Trio Motion Control",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Trio Motion Control Port traffic."
+    },
+    "Filter": {
+      "@For": "Trio Motion Control",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3240"
+    },
+    "Payload": {
+      "@For": "Trio Motion Control",
+      "Description": "Tags Trio Motion Control port traffic by destination port.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Trio Motion Control"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "OneHome",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of OneHome Remote Access traffic. This fingerprint looks for evidence of OneHome Service Port traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Remote Access",
+        "@Name": "Remote Access",
+        "display_filter": "dst port 2198"
+      },
+      {
+        "@For": " Service Port",
+        "@Name": "Service Port",
+        "display_filter": "dst port 2199"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Remote Access",
+        "Description": "OneHome Remote Access",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "OneHome Remote Access"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Service Port",
+        "Description": "OneHome Remote Access Service port",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "OneHome Remote Access Service port"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

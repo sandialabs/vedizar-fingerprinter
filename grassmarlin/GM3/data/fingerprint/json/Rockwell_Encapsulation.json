@@ -1,0 +1,38 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell Encapsulation",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Rockwell Encapsulation traffic."
+    },
+    "Filter": [
+      {
+        "@For": "Encapsulation",
+        "@Name": "Src",
+        "display_filter": "src port 44818"
+      },
+      {
+        "@For": "Encapsulation",
+        "@Name": "Dst",
+        "display_filter": "dst port 44818"
+      }
+    ],
+    "Payload": {
+      "@For": "Encapsulation",
+      "Description": "Rockwell encapsulation that tags the source and destination ports",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Rockwell Encapsulation"
+            }
+          }
+        }
+      }
+    }
+  }
+}

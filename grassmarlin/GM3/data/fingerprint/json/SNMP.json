@@ -1,0 +1,79 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "SNMP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of the Simple Network Management Protocol traffic."
+    },
+    "Filter": [
+      {
+        "@For": "SNMP",
+        "@Name": "SNMP",
+        "display_filter": "(udp) && (dst port 161)"
+      },
+      {
+        "@For": "SNMP",
+        "@Name": "SNMPTRAP",
+        "display_filter": "(udp) && (dst port 162)"
+      }
+    ],
+    "Payload": {
+      "@For": "SNMP",
+      "Description": "Tags Simple Network Management Protocol over UDP port 161 and 162 for SNMPTRAP services. The payload looks for SNMP HEX pattern match that will extract the CommunityID and the RequestID from the DATA GET request header.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "InternetStandardProtocol",
+              "#text": "SNMP"
+            }
+          }
+        }
+      },
+      "Match": {
+        "@Offset": "0",
+        "@Reverse": "true",
+        "@NoCase": "false",
+        "@Depth": "0",
+        "@Relative": "true",
+        "@Within": "0",
+        "@MoveCursors": "true",
+        "Content": {
+          "@Type": "HEX",
+          "#text": "302E02"
+        },
+        "AndThen": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+
+            "Extract": [
+              {
+                "@Name": "CommunityID",
+                "@From": "7",
+                "@To": "15",
+                "@MaxLength": "1024",
+                "@Endian": "BIG",
+                "Post": {
+                  "@Convert": "STRING"
+                }
+              },
+              {
+                "@Name": "RequestID",
+                "@From": "19",
+                "@To": "23",
+                "@MaxLength": "1024",
+                "@Endian": "BIG",
+                "Post": {
+                  "@Convert": "INTEGER"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

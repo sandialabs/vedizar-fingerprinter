@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Memobus",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Memobus traffic."
+    },
+    "Filter": {
+      "@For": "Memobus",
+      "@Name": "Yashawa MP Series Controllers",
+      "display_filter": "dst port 502"
+    },
+    "Payload": {
+      "@For": "Memobus",
+      "Description": "Alternative for those who require a non-ieController",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Memobus"
+            }
+          }
+        }
+      }
+    }
+  }
+}

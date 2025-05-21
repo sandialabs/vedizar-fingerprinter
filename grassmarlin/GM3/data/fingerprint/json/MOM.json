@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "MOM",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Microsoft's Operation Manager framework that provides event driven operation for monitoring and performance tracking, policy enforcement, and auditing."
+    },
+    "Filter": {
+      "@For": "MOM",
+      "@Name": "MOM",
+      "display_filter": "(tcp) && (dst port 1270)"
+    },
+    "Payload": {
+      "@For": "MOM",
+      "Description": "Tags MOM encrypted traffic",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "MOM"
+            }
+          }
+        }
+      }
+    }
+  }
+}

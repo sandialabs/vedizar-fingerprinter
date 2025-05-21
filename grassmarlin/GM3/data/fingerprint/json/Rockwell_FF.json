@@ -1,0 +1,101 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell FF",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of FF LAN Redundancy Port traffic. This fingerprint looks for evidence of FF Fieldbus traffic. This fingerprint looks for evidence of FF System Management traffic. This fingerprint looks for evidence of FF Annunciation traffic."
+    },
+    "Filter": [
+      {
+        "@For": "LAN Redundancy Port",
+        "@Name": "LAN Redundancy",
+        "display_filter": "dst port 3622"
+      },
+      {
+        "@For": "Fieldbus Message Specification",
+        "@Name": "Fieldbus Message Specification",
+        "display_filter": "dst port 1090"
+      },
+      {
+        "@For": "System Management",
+        "@Name": "System Management",
+        "display_filter": "dst port 1091"
+      },
+      {
+        "@For": "Annunciation",
+        "@Name": "Annunciation",
+        "display_filter": "dst port 1089"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "LAN Redundancy Port",
+        "Description": "Rockwell LAN Redundancy payload that tags the source port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FF-LR-PORT"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Fieldbus Message Specification",
+        "Description": "Rockwell Fieldbus Message Specification payload that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FF-FMS"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "System Management",
+        "Description": "Rockwell System Management payload that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FF-SM"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Annunciation",
+        "Description": "Rockwell Annuciation payload that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FF-ANNUNC"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

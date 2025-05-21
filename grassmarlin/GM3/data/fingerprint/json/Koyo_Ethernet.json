@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Koyo Ethernet",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Koyo Ethernet traffic over 28784."
+    },
+    "Filter": {
+      "@For": "Koyo Ethernet",
+      "@Name": "Ethernet destination.port",
+      "display_filter": "dst port 28784"
+    },
+    "Payload": {
+      "@For": "Koyo Ethernet",
+      "Description": "PLC that uses IEC/JIS standards under the Direct Logic PLC.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Koyo Ethernet"
+            }
+          }
+        }
+      }
+    }
+  }
+}

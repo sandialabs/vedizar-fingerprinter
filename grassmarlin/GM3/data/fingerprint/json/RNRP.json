@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "RNRP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of RNRP traffic."
+    },
+    "Filter": {
+      "@For": "Redundant Network Routing",
+      "@Name": "RNRP",
+      "display_filter": "dst port 2423"
+    },
+    "Payload": {
+      "@For": "Redundant Network Routing",
+      "Description": "Tags RNRP TCP/UDP destination port",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "RNRP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

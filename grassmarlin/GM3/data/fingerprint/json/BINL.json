@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "BINL",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Boot Information Negotiation layer service which answers PXE requests and checks active directory for client information to and from the server."
+    },
+    "Filter": {
+      "@For": "BINL",
+      "@Name": "Boot Information Negotiation",
+      "display_filter": "(udp) && (dst port 4011)"
+    },
+    "Payload": {
+      "@For": "BINL",
+      "Description": "Tags UDP service that makes sure the client received correct configuration and policy settings during negotiation.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "BINL"
+            }
+          }
+        }
+      }
+    }
+  }
+}

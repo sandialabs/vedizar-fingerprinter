@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "ServerStart",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of ServerStart RemoteControl traffic."
+    },
+    "Filter": {
+      "@For": "ServerStart",
+      "@Name": "RemoteControl",
+      "display_filter": "src port 9213"
+    },
+    "Payload": {
+      "@For": "ServerStart",
+      "Description": "Tags inbound ServerStart RemoteControl traffic by source port",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "ServerStart RemoteControl"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell AADvance",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Rockwell AADvance traffic."
+    },
+    "Filter": [
+      {
+        "@For": "ModbusTCP",
+        "@Name": "ModbusTCP",
+        "display_filter": "(tcp) && (dst port 502)"
+      },
+      {
+        "@For": "SNCP",
+        "@Name": "SNCP",
+        "display_filter": "(tcp) && (dst port 1132)"
+      },
+      {
+        "@For": "ModbusRTU",
+        "@Name": "ModbusRTU",
+        "display_filter": "(tcp) && (dst port 1132)"
+      },
+      {
+        "@For": "Discover Tool",
+        "@Name": "Discover Tool 2010",
+        "display_filter": "(udp) && (dst port 2010)"
+      },
+      {
+        "@For": "Discover Tool",
+        "@Name": "Discover Tool 2011",
+        "display_filter": "(udp) && (dst port 2011)"
+      },
+      {
+        "@For": "Peer to Peer",
+        "@Name": "P2P",
+        "display_filter": "(udp) && (dst port 5000)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10001",
+        "display_filter": "(tcp) && (dst port 10001)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10002",
+        "display_filter": "(tcp) && (dst port 10002)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10003",
+        "display_filter": "(tcp) && (dst port 10003)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10004",
+        "display_filter": "(tcp) && (dst port 10004)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10005",
+        "display_filter": "(tcp) && (dst port 10005)"
+      },
+      {
+        "@For": "Serial Data",
+        "@Name": "Serial 10006",
+        "display_filter": "(tcp) && (dst port 10006)"
+      },
+      {
+        "@For": "Telnet",
+        "@Name": "Telnet",
+        "display_filter": "(tcp) && (dst port 55555)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "ModbusTCP",
+        "Description": "Rockwell AADvance ModbusTCP that tags the destination port.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Protocol",
+                "#text": "Rockwell AADvance ModbusTCP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "SNCP",
+        "Description": "Rockwell AADvance tagged via destination port. Safely network control protocol, used by opc, workbench debugger and binding networks.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell AADvance SNCP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "ModbusRTU",
+        "Description": "Rockwell AADvance tagged via destination port. RTU packaged in serial stream. Other ports may be assigned.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "RTU",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell AADvance ModbusRTU"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Discover Tool",
+        "Description": "Rockwell AADvance tagged via destination port. Used to configure systems. the tool sends broadcast to 2010 and systems reply to port 2011.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "RTU",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockw ell AADvance Discovery Tool"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Peer to Peer",
+        "Description": "Rockwell AADvance tagged via destination port.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell AADvance Peer to Peer"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Serial Data",
+        "Description": "Rockwell AADvance tagged via destination port. Transparent communication interface, where an Ethernet host can talk through AADvance to a serial port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell AADvance Serial Data"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Telnet",
+        "Description": "Rockwell AADvance tagged via destination port. Diagnostic command line interface",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell AADvance Telnet"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

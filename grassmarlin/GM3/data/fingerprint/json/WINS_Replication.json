@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "WINS Replication",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of windows internet naming service that enables NetBIOS name resolution."
+    },
+    "Filter": {
+      "@For": "WINS",
+      "@Name": "Replication",
+      "display_filter": "dst port 42"
+    },
+    "Payload": {
+      "@For": "WINS",
+      "Description": "Tags WINS server that is communicating with network clients using NetBIOS name resolution",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "WINS Replication"
+            }
+          }
+        }
+      }
+    }
+  }
+}

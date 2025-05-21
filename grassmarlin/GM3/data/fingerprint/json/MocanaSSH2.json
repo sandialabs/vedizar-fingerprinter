@@ -1,0 +1,38 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "MocanaSSH2",
+      "Author": "Default",
+      "Description": "This device is running Mocana SSH2, it is commonly used on industrial  systems and is at least seen in ruggedcom routers."
+    },
+    "Filter": {
+      "@For": "MocanaSSH2",
+      "@Name": "SSH2",
+      "display_filter": "(tcp) && (src port 22)"
+    },
+    "Payload": {
+      "@For": "MocanaSSH2",
+      "Description": "Tags Mocana SSH2 traffic with HEX pattern and destination port match.",
+      "Match": {
+        "@Offset": "0",
+        "@MoveCursors": "true",
+        "Content": {
+          "@Type": "HEX",
+          "#text": "5353482D322E302D4D6F63616E612053534820"
+        },
+        "AndThen": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "MocanaSSH2"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

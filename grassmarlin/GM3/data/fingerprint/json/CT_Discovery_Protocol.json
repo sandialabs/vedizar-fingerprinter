@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "CT Discovery Protocol",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of CT Discovery Protocol traffic."
+    },
+    "Filter": [
+      {
+        "@For": "CTDP Src",
+        "@Name": "source.port",
+        "display_filter": "src port 7022"
+      },
+      {
+        "@For": "CTDP Dst",
+        "@Name": "destination.port",
+        "display_filter": "dst port 7022"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "CTDP Src",
+        "Description": "Tags source traffic of CT Discovery Protocol",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "DiscoveryProtocol",
+                "#text": "CT Discovery Protocol"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CTDP Dst",
+        "Description": "Tags destination traffic of CT Discovery Protocol",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "DiscoveryProtocol",
+                "#text": "CT Discovery Protocol"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

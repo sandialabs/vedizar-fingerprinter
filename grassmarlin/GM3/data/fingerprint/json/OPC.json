@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "OPC",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of OPC traffic. OPC is a series of standard specifications designed to simplify integration of various forms of data on systems from different vendors."
+    },
+    "Filter": {
+      "@For": "OLE for Process Control",
+      "@Name": "OPC",
+      "display_filter": "dst port 135"
+    },
+    "Payload": {
+      "@For": "OLE for Process Control",
+      "Description": "Devices running OPC client trying to connect an OPC server on a different computer would reply on DCOM for the communication.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "OPC"
+            }
+          }
+        }
+      }
+    }
+  }
+}

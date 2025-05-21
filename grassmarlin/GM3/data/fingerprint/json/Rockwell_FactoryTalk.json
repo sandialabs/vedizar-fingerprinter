@@ -1,0 +1,507 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell FactoryTalk",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of FactoryTalk Event Server traffic. This fingerprint looks for evidence of FactoryTalk Directory Server File transfer traffic. This fingerprint looks for evidence of FactoryTalk Directory Server traffic. This fingerprint looks for evidence of FactoryTalk Alarming  traffic. This fingerprint looks for evidence of FactoryTalk Object RPC traffic.This fingerprint looks for evidence of FactoryTalk Event Multiplexor traffic.This fingerprint looks for evidence of FactoryTalk Service control traffic.This fingerprint looks for evidence of FactoryTalk Server Health traffic. This fingerprint looks for evidence of FactoryTalk Historian Site Edition which includes PI Network Manager, Analysis Framework v1.x, ACE2 scheduler, Asset Framework Server, PI Notifications, Asset Framework to OLEDB Enterprise. This fingerprint looks for evidence of FactoryTalk Asset Centre Services traffic. This fingerprint looks for evidence of FactoryTalk Asset Centre Server/ VantagePoint SQL or MSSQL. This fingerprint looks for evidence of FactoryTalk Live Data/SE HMI Tag Server. This fingerprint looks for evidence of FactoryTalk Diagnostics. This fingerprint looks for evidence of FactoryTalk Diagnostics VantagePoint Incuity Server Advertiser."
+    },
+    "Filter": [
+      {
+        "@For": "Alarming Server",
+        "@Name": "Alarming",
+        "display_filter": "(tcp) && (dst port 6543)"
+      },
+      {
+        "@For": "Object RPC",
+        "@Name": "RPC",
+        "display_filter": "(tcp) && (dst port 1330)"
+      },
+      {
+        "@For": "Event Multiplexor",
+        "@Name": "Multiplexor",
+        "display_filter": "(tcp) && (dst port 7600)"
+      },
+      {
+        "@For": "Service Control",
+        "@Name": "Control",
+        "display_filter": "(tcp) && (dst port 1331)"
+      },
+      {
+        "@For": "Server Health",
+        "@Name": "Server Health",
+        "display_filter": "(tcp) && (dst port 1332)"
+      },
+      {
+        "@For": "Event Server",
+        "@Name": "Event Server",
+        "display_filter": "(tcp) && (src port 7700)"
+      },
+      {
+        "@For": "Directory Server File Transfer",
+        "@Name": "File Transfer",
+        "display_filter": "dst port 3060"
+      },
+      {
+        "@For": "Directory Server",
+        "@Name": "Directory Server",
+        "display_filter": "(tcp) && (dst port 7710)"
+      },
+      {
+        "@For": "PI Network Manager",
+        "@Name": "PI Network",
+        "display_filter": "(tcp) && (dst port 5450)"
+      },
+      {
+        "@For": "Analysis Framework 5454",
+        "@Name": "5454",
+        "display_filter": "(tcp) && (dst port 5454)"
+      },
+      {
+        "@For": "Analysis Framework 5455",
+        "@Name": "5455",
+        "display_filter": "(tcp) && (dst port 5455)"
+      },
+      {
+        "@For": "ACE2 Scheduler",
+        "@Name": "ACE2",
+        "display_filter": "(tcp) && (dst port 5456)"
+      },
+      {
+        "@For": "Asset Framework Server",
+        "@Name": "Asset Framework",
+        "display_filter": "(tcp) && (dst port 5457)"
+      },
+      {
+        "@For": "PI Notification",
+        "@Name": "PI",
+        "display_filter": "(tcp) && (dst port 5458)"
+      },
+      {
+        "@For": "Asset Centre Services 7002",
+        "@Name": "7002",
+        "display_filter": "(tcp) && (dst port 7002)"
+      },
+      {
+        "@For": "Asset Centre Services 7003",
+        "@Name": "7003",
+        "display_filter": "(tcp) && (dst port 7003)"
+      },
+      {
+        "@For": "Asset Centre Services 7004",
+        "@Name": "7004",
+        "display_filter": "(tcp) && (dst port 7004)"
+      },
+      {
+        "@For": "Asset Centre Server/VantagePoint SQL",
+        "@Name": "SQL",
+        "display_filter": "(tcp) && (dst port 1433)"
+      },
+      {
+        "@For": "Asset Centre Server/VantagePoint MSSQL",
+        "@Name": "MSSQL",
+        "display_filter": "(tcp) && (dst port 1434)"
+      },
+      {
+        "@For": "Live Data/SE HMI Tag Server",
+        "@Name": "Data/SE HMI",
+        "display_filter": "(tcp) && (dst port 49281)"
+      },
+      {
+        "@For": "Diagnostics",
+        "@Name": "Diagnostics",
+        "display_filter": "(tcp) && (dst port 60093)"
+      },
+      {
+        "@For": "VantagePoint Incuity Server Advertiser",
+        "@Name": "Incuity Server",
+        "display_filter": "(tcp) && (dst port 65207)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Alarming Server",
+        "Description": "Rockwell FactoryTalk Alarming Server",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Alarming Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Object RPC",
+        "Description": "Rockwell FactoryTalk Object RPC",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "2",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Object RPC"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Event Multiplexor",
+        "Description": "Rockwell FactoryTalk Object RPC",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Event Multiplexor"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Service Control",
+        "Description": "Rockwell FactoryTalk Service Control",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "2",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Service Control"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Server Health",
+        "Description": "Rockwell FactoryTalk Server Health",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "2",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Server Health"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Event Server",
+        "Description": "Rockwell FactoryTalk Event Server",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "2",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Event Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Directory Server File Transfer",
+        "Description": "Rockwell FactoryTalk Directory Server File Transfer",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Directory Server File Transfer"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Directory Server",
+        "Description": "Rockwell FactoryTalk Directory Server",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Directory Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "PI Network Manager",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - PI Network Manager",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "ENGINEER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk PI Network Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Analysis Framework 5454",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - Analysis Framework 5454",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Analysis Framework 5454"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Analysis Framework 5455",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - Analysis Framework 5455",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Analysis Framework 5455"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "ACE2 Scheduler",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - ACE2 Scheduler",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk ACE2 Scheduler"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Framework Server",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - Asset Framework Server",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Framework Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "PI Notification",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - PI Notification",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk PI Notification"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Centre Services 7002",
+        "Description": "Rockwell FactoryTalk Historian Site Edition - Asset Centre Services 7002",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Centre Services 7002"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Centre Services 7003",
+        "Description": "Rockwell FactoryTalk Asset Centre Services 7003",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Centre Services 7003"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Centre Services 7004",
+        "Description": "Rockwell FactoryTalk Asset Centre Services 7004",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Centre Services 7004"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Centre Server/VantagePoint SQL",
+        "Description": "Rockwell FactoryTalk Asset Centre Server/ VantagePoint SQL",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Centre Server. SQL server communication over default port."
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Asset Centre Server/VantagePoint MSSQL",
+        "Description": "Rockwell FactoryTalk Asset Centre Server/ VantagePoint MSSQL",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Asset Centre Server. Recommended static destination port for MSSQL to minimize the number of ports open to a firewall."
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Live Data/SE HMI Tag Server",
+        "Description": "Rockwell FactoryTalk Live Data/SE HMI Tag Server",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Live Data/SE HMI Tag Server."
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Diagnostics",
+        "Description": "Rockwell FactoryTalk Diagnostics",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk Diagnostics."
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "VantagePoint Incuity Server Advertiser",
+        "Description": "Rockwell FactoryTalk VantagePoint Incuity Server Advertiser",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FactoryTalk VantagePoint Incuity Server Advertiser."
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

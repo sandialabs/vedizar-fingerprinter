@@ -1,0 +1,101 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell RSViewSE",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of RSviewSE HMI Server traffic. This fingerprint looks for evidence of RSViewSE Server Framework traffic. This fingerprint looks for evidence of RSViewSE HMI Activation traffic. This fingerprint looks for evidence of RSViewSE Directory Serve traffic."
+    },
+    "Filter": [
+      {
+        "@For": "HMI Server",
+        "@Name": "HMI Server",
+        "display_filter": "src port 7720"
+      },
+      {
+        "@For": "Server Framework",
+        "@Name": "Server Framework",
+        "display_filter": "src port 7721"
+      },
+      {
+        "@For": "HMI Activation",
+        "@Name": "HMI Activation",
+        "display_filter": "src port 7721"
+      },
+      {
+        "@For": "Directory Server",
+        "@Name": "Directory Server",
+        "display_filter": "src port 7721"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "HMI Server",
+        "Description": "Rockwell FactoryTalk RSView SE HMI Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSView SE HMI Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Server Framework",
+        "Description": "Rockwell FactoryTalk RSView SE Server Framework",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSView SE Server Framework"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "HMI Activation",
+        "Description": "Rockwell FactoryTalk RSView SE HMI Activation",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "OTHER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell HMI Activation"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Directory Server",
+        "Description": "Rockwell FactoryTalk RSView SE Directory Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Directory Server"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

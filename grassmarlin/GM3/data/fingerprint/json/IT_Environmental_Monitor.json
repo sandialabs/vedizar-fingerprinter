@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "IT Environmental Monitor",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of IT Environmental Monitor traffic."
+    },
+    "Filter": {
+      "@For": "Item Service",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3848"
+    },
+    "Payload": {
+      "@For": "Item Service",
+      "Description": "Gateway Server for industrial devices running CodeSys programming interface.",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "IT Environmental Monitor"
+            }
+          }
+        }
+      }
+    }
+  }
+}

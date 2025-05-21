@@ -1,0 +1,32 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Phoenix Contact PCWorx",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Phoenix contact data traffic."
+    },
+    "Filter": {
+      "@For": "PCWorx",
+      "@Name": "ENGINEERING WORKSTATION 1962",
+      "display_filter": "dst port 1962"
+    },
+    "Payload": {
+      "@For": "PCWorx",
+      "Description": "Looks for PCWorx data communication of engineering workstation over the port specified.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "WORKSTATION",
+            "Role": "ENGINEER",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "PCWorx"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Server View",
+      "Author": "Default",
+      "Description": "This tries to find Server view dmbs access traffic."
+    },
+    "Filter": {
+      "@For": "Server View",
+      "@Name": "DBMS Access",
+      "display_filter": "src port 9212"
+    },
+    "Payload": {
+      "@For": "Server View",
+      "Description": "Tags the DBMS access from Server View.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Server View DBMS access"
+            }
+          }
+        }
+      }
+    }
+  }
+}

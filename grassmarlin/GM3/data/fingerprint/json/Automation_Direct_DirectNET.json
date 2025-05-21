@@ -1,0 +1,205 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Automation Direct DirectNET",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Automation Direct's DirectNet protocol traffic."
+    },
+    "Filter": [
+      {
+        "@For": "DirectNet Master TCP",
+        "@Name": "MASTER TCP",
+        "display_filter": "(tcp) && (dst port 3447)"
+      },
+      {
+        "@For": "DirectNet Slave TCP",
+        "@Name": "SLAVE TCP",
+        "display_filter": "(udp) && (src port 3447)"
+      },
+      {
+        "@For": "DirectNet Master UDP",
+        "@Name": "MASTER UDP",
+        "display_filter": "(udp) && (dst port 3447)"
+      },
+      {
+        "@For": "DirectNet Slave UDP",
+        "@Name": "SLAVE UDP",
+        "display_filter": "(udp) && (src port 3447)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "DirectNet Master TCP",
+        "Description": "DirectNet MASTER that matches the HEX pattern",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Automation Direct DirectNet"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "4E2105"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "Automation Direct DirectNet"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DirectNet Slave TCP",
+        "Description": "DirectNet SLAVE that matches the HEX pattern",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "RTU",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Automation Direct DirectNet"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "4E2105"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "Automation Direct DirectNet"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DirectNet Master UDP",
+        "Description": "DirectNet MASTER that matches the HEX pattern",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Automation Direct DirectNet"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "4E2105"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "Automation Direct DirectNet"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DirectNet Slave UDP",
+        "Description": "DirectNet SLAVE that matches the HEX pattern",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "RTU",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Automation Direct DirectNet"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "4E2105"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "Automation Direct DirectNet"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

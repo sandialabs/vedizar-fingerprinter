@@ -1,0 +1,172 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "GE",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of GE 9030 devices. This fingerprint identifies evidence of engineering workstations for GE 9030 devices. This fingerprint identifies evidence of GE Industrial Solution SRTP Data traffic. This fingerprint identifies evidence of Ethernet Global Data traffic."
+    },
+    "Filter": [
+      {
+        "@For": "9030 Device",
+        "@Name": "Device",
+        "display_filter": "(tcp) && (src port 18245)"
+      },
+      {
+        "@For": "9030 Engineering workstation",
+        "@Name": "Engineering workstation",
+        "display_filter": "(tcp) && (dst port 18245)"
+      },
+      {
+        "@For": "GE-SRTP 18245",
+        "@Name": "18245",
+        "display_filter": "(tcp) && (dst port 18245)"
+      },
+      {
+        "@For": "GE-SRTP 18246",
+        "@Name": "18246",
+        "display_filter": "(tcp) && (dst port 18246)"
+      },
+      {
+        "@For": "Producer/Consumer",
+        "@Name": "Producer/Consumer",
+        "display_filter": "(udp) && (dst port 18246)"
+      },
+      {
+        "@For": "Command Service",
+        "@Name": "Service",
+        "display_filter": "(udp) && (dst port 7937)"
+      },
+      {
+        "@For": "QuickPanels",
+        "@Name": "QuickPanels",
+        "display_filter": "(tcp) && (dst port 57176)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "9030 Device",
+        "Description": "PLC GE9030 device",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE"
+            }
+          }
+        }
+      },
+      {
+        "@For": "9030 Engineering workstation",
+        "Description": "Engineering workstation for GE9030",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0200"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "WORKSTATION",
+                "Role": "ENGINEER"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "GE-SRTP 18245",
+        "Description": "The protocol was developed by GE Intelligent Platforms after GE Fanuc to tranfer data of PLCs",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "GE-STRP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "GE-SRTP 18246",
+        "Description": "The protocol was developed by GE Intelligent Platforms after GE Fanuc to tranfer data of PLCs",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "GE-STRP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Producer/Consumer",
+        "Description": "The EGD supports both the producer/consumer service port and the command service port using UDP over an IP network.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "GE Fanuc EGD Producer/Consumer"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Command Service",
+        "Description": "The EGD supports both the producer/consumer service port and the command service port using UDP over an IP network.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "GE Fanuc EGD Command Service"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "QuickPanels",
+        "Description": "Multi functional interface that integrates process control, views, runs data historian communication.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "GE Fanuc QuickPanels"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

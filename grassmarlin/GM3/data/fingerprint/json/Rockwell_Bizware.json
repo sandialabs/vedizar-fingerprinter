@@ -1,0 +1,211 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell Bizware",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Bizware Task Manager traffic. This fingerprint looks for evidence of Bizware Production Server traffic. This fingerprint looks for evidence of Bizware Server Manager traffic. This fingerprint looks for evidence of Bizware CTP Server traffic. This fingerprint looks for evidence of Bizware PlantMetrics Server traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Task Manager",
+        "@Name": "Task Manager",
+        "display_filter":  "(tcp) && (dst port 4123) "
+      },
+      {
+        "@For": " Production Server",
+        "@Name": "Production",
+        "display_filter":  "(tcp) && (dst port 4120) "
+      },
+      {
+        "@For": " Server Manager",
+        "@Name": "Server",
+        "display_filter":  "(tcp) && (dst port 4121) "
+      },
+      {
+        "@For": " CTP Server",
+        "@Name": "CTP",
+        "display_filter":  "(tcp) && (dst port 4125) "
+      },
+      {
+        "@For": " PlantMetrics Server",
+        "@Name": "PlantMetrics",
+        "display_filter":  "(tcp) && (dst port 4122) "
+      },
+      {
+        "@For": " Scheduler",
+        "@Name": "Scheduler",
+        "display_filter":  "(tcp) && (dst port 4124) "
+      },
+      {
+        "@For": " HTTP Product Server",
+        "@Name": "HTTP Product",
+        "display_filter":  "(tcp) && (dst port 8080) "
+      },
+      {
+        "@For": " HTTP Server Manager",
+        "@Name": "HTTP Server",
+        "display_filter":  "(tcp) && (dst port 8081) "
+      },
+      {
+        "@For": " HTTP CTP Server",
+        "@Name": "HTTP CTP",
+        "display_filter":  "(tcp) && (dst port 8083) "
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Task Manager",
+        "Description": "Rockwell Bizware Task Manager payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware Task Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Production Server",
+        "Description": "Rockwell Bizware Production Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware Production Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Server Manager",
+        "Description": "Rockwell Bizware Server Manager payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware Server Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " CTP Server",
+        "Description": "Rockwell Bizware CTP Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware CTP Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " PlantMetrics Server",
+        "Description": "Rockwell Bizware Server Manager payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware PlanMetrics Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Scheduler",
+        "Description": "Rockwell Bizware Scheduler payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware Task Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " HTTP Product Server",
+        "Description": "Rockwell Bizware HTTP Product Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware HTTP Product Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " HTTP Server Manager",
+        "Description": "Rockwell Bizware HTTP Server Manager payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware HTTP Server Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " HTTP CTP Server",
+        "Description": "Rockwell Bizware HTTP CTP Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell Bizware HTTP CTP Server"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Unitronics",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Unitronics Socket TCP slave communication."
+    },
+    "Filter": [
+      {
+        "@For": "Unitronics Socket1",
+        "@Name": "Socket1",
+        "display_filter": "dst port 20256"
+      },
+      {
+        "@For": "Unitronics Socket2",
+        "@Name": "Socket2",
+        "display_filter": "dst port 502"
+      },
+      {
+        "@For": "Unitronicsw Socket3",
+        "@Name": "Socket2",
+        "display_filter": "dst port 20257"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Unitronics Socket1",
+        "Description": "PLC Socket Slave connection over TCP 20256",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Socket1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Unitronics Socket2",
+        "Description": "PLC Socket Slave connection over TCP 502",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Socket2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Unitronicsw Socket3",
+        "Description": "PLC Socket Slave connection over TCP 20257",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Socket3"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

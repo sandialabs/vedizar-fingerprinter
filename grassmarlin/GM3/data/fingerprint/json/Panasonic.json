@@ -1,0 +1,38 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Panasonic",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Panasonic FP and FP2 ethernet traffic."
+    },
+    "Filter": [
+      {
+        "@For": "Panasonic",
+        "@Name": "FP",
+        "display_filter": "dst port 9094"
+      },
+      {
+        "@For": "Panasonic",
+        "@Name": "FP2",
+        "display_filter": "dst port 8500"
+      }
+    ],
+    "Payload": {
+      "@For": "Panasonic",
+      "Description": "PLC that has the ability to do higher processing with optimizing communication.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Pansonic FP/FP2"
+            }
+          }
+        }
+      }
+    }
+  }
+}

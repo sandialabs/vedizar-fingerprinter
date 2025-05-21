@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "I-NET 2000-NPR",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of I/NET 2000-NPR traffic."
+    },
+    "Filter": {
+      "@For": "I-NET 2000-NPR",
+      "@Name": "destination.port",
+      "display_filter": "dst port 5069"
+    },
+    "Payload": {
+      "@For": "I-NET 2000-NPR",
+      "Description": "This fingerprint looks for the evidence of I/NET 2000-NPR traffic.",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "I-NET 2000-NPR"
+            }
+          }
+        }
+      }
+    }
+  }
+}

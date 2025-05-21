@@ -1,0 +1,139 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "MSMQ",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of the Microsoft messaging queuing system for the messaging infrastructure and development tool for creating distributed messaging applications for Windows."
+    },
+    "Filter": [
+      {
+        "@For": "MSMQ",
+        "@Name": "MSMQ",
+        "display_filter": "dst port 1801"
+      },
+      {
+        "@For": "MSMQ-DCs",
+        "@Name": "DCs TCP",
+        "display_filter": "(tcp) && (dst port 2101)"
+      },
+      {
+        "@For": "MSMQ-Mgmt",
+        "@Name": "Mgmt TCP",
+        "display_filter": "(tcp) && (dst port 27107)"
+      },
+      {
+        "@For": "MSMQ-Ping",
+        "@Name": "Ping UDP",
+        "display_filter": "(udp) && (dst port 3527)"
+      },
+      {
+        "@For": "MSMQ-RPC",
+        "@Name": "RPC TCP",
+        "display_filter": "(tcp) && (dst port 2105)"
+      },
+      {
+        "@For": "MSMQ-RPC2",
+        "@Name": "RPC2 TCP",
+        "display_filter": "(udp) && (dst port 2103)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "MSMQ",
+        "Description": "MSMQ UDP/TCP over 1801",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MSMQ-DCs",
+        "Description": "MSMQ-DCs TCP over 2101",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ-DCs"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MSMQ-Mgmt",
+        "Description": "MSMQ-Mgmt TCP over 2107",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ-Mgmt"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MSMQ-Ping",
+        "Description": "MSMQ-Ping UDP over 3527",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ-Ping"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MSMQ-RPC",
+        "Description": "MSMQ-RPC TCP over 2105",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ-RPC"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MSMQ-RPC2",
+        "Description": "MSMQ-RPC2 TCP over 2103",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "MSMQ-RPC2"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

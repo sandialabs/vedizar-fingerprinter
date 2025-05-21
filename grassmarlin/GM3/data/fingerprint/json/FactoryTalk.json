@@ -1,0 +1,98 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "FactoryTalk",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of FactoryTalk Alarming  traffic.This fingerprint looks for the evidence of FactoryTalk Object RPC traffic.This fingerprint looks for the evidence of Factory Talk Event Multiplexor traffic.This fingerprint looks for the evidence of FactoryTalk Service control traffic.This fingerprint looks for the evidence of FactoryTalk Server Health traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Alarming Server",
+        "display_filter": "dst port 6543"
+      },
+      {
+        "@For": " Object RPC",
+        "display_filter": "dst port 1330"
+      },
+      {
+        "@For": " Event Multiplexor",
+        "display_filter": "dst port 7600"
+      },
+      {
+        "@For": " Service control",
+        "display_filter": "dst port 1331"
+      },
+      {
+        "@For": " Server Health",
+        "display_filter": "dst port 1332"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Alarming Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "RNA-ALARM-SERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Object RPC",
+        "Always": {
+          "Return": {
+            "@Confidence": "2",
+            "Extract": {
+              "@Name": "RNAORPC",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Event Multiplexor",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "FT-EVENT-MULTI",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Service control",
+        "Always": {
+          "Return": {
+            "@Confidence": "2",
+            "Extract": {
+              "@Name": "RNASERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Server Health",
+        "Always": {
+          "Return": {
+            "@Confidence": "2",
+            "Extract": {
+              "@Name": "RNASERVERPING",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

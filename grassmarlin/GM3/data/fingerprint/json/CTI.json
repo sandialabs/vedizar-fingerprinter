@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "CTI",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of CTI Program Load traffic. This fingerprint looks for evidence of CTI System Msg traffic."
+    },
+    "Filter": [
+      {
+        "@For": "Program Load",
+        "@Name": "destination.port",
+        "display_filter": "dst port 4452"
+      },
+      {
+        "@For": "System Message",
+        "@Name": "destination.port",
+        "display_filter": "dst port 4451"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Program Load",
+        "Description": "Tags the CTI Program Load",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "CT Program Load"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "System Message",
+        "Description": "Tags the CT Discovery Protocol",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "CT System Message"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

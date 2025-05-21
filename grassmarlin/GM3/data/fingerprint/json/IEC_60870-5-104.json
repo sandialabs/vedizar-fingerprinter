@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "IEC 60870-5-104",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of IEC 60870-5-104 traffic."
+    },
+    "Filter": {
+      "@For": "60870-5-104",
+      "@Name": "60870-5-104",
+      "display_filter": "dst port 2404"
+    },
+    "Payload": {
+      "@For": "60870-5-104",
+      "Description": "Set of standards which define systems used for SCADA in electrical engineering and power systems",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "IEC 60870-5-104"
+            }
+          }
+        }
+      }
+    }
+  }
+}

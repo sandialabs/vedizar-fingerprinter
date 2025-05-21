@@ -1,0 +1,82 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "EGD",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of EGD Type:13 Version:1 traffic over 18246."
+    },
+    "Filter": {
+      "@For": "EGD",
+      "@Name": "Ethernet Global Data",
+      "display_filter": "(dst port 18246) && (src port 18246)"
+    },
+    "Payload": {
+      "@For": "EGD",
+      "Description": "Protocol that enables producer (server) to share a portion of its memory to all the consumer (clients) at the schedule periodic rate protocol developed for GE Fanuc PLCs to change data between PLCs/GE drive systems. The protocol uses UDP over Ethernet layers for exchanging data.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Ethernet Global Data"
+            }
+          }
+        }
+      },
+      "Match": {
+        "@Offset": "0",
+        "@Reverse": "true",
+        "@NoCase": "false",
+        "@Depth": "2",
+        "@Relative": "true",
+        "@Within": "0",
+        "@MoveCursors": "true",
+        "Content": {
+          "@Type": "HEX",
+          "#text": "0D01"
+        },
+        "AndThen": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+
+            "Extract": [
+              {
+                "@Name": "RequestID",
+                "@From": "2",
+                "@To": "4",
+                "@MaxLength": "1024",
+                "@Endian": "LITTLE",
+                "Post": {
+                  "@Convert": "INTEGER"
+                }
+              },
+              {
+                "@Name": "ProducerID-IP_Address",
+                "@From": "4",
+                "@To": "8",
+                "@MaxLength": "1024",
+                "@Endian": "BIG",
+                "Post": {
+                  "@Convert": "RAW_BYTES"
+                }
+              },
+              {
+                "@Name": "ExchangeID",
+                "@From": "8",
+                "@To": "12",
+                "@MaxLength": "1024",
+                "@Endian": "LITTLE",
+                "Post": {
+                  "@Convert": "HEX"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

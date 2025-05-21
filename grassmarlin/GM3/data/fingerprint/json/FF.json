@@ -1,0 +1,66 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "FF",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of FF LAN Redundancy Port traffic.This fingerprint looks for the evidence of FF Fieldbus traffic.This fingerprint looks for the evidence of FF System Management traffic.This fingerprint looks for the evidence of FF Annunciation traffic."
+    },
+    "Filter": [
+      {
+        "@For": " LAN Redundancy Port",
+        "display_filter": "dst port 3622"
+      },
+      {
+        "@For": " Fieldbus Message Specification",
+        "display_filter":  "((tcp) && (src port 1090)) && (dst port 1090)"
+      },
+      {
+        "@For": " SYstem Management",
+        "display_filter":  "((tcp) && (src port 1091)) && (dst port 1091)"
+      },
+      {
+        "@For": " Annunciation",
+        "display_filter": "(src port 1089) && (dst port 1089)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " LAN Redundancy Port",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Extract": {
+              "@Name": "FF-LR-PORT",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Fieldbus Message Specification",
+        "Always": {
+          "Return": {
+            "@Confidence": "4"
+          }
+        }
+      },
+      {
+        "@For": " SYstem Management",
+        "Always": {
+          "Return": {
+            "@Confidence": "4"
+          }
+        }
+      },
+      {
+        "@For": " Annunciation",
+        "Always": {
+          "Return": {
+            "@Confidence": "4"
+          }
+        }
+      }
+    ]
+  }
+}

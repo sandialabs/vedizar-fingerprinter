@@ -1,0 +1,91 @@
+{
+  "Fingerprint": {
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "@xsi:noNamespaceSchemaLocation": "../../../src/core/fingerprint/fingerprint3.xsd",
+    "Header": {
+      "Name": "Rockwell",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of Rockwell CSP2, CSP3, CSP1, and Encapsulation traffic."
+    },
+    "Filter": [
+      {
+        "@For": "CSP1",
+        "display_filter": "src port 2221"
+      },
+      {
+        "@For": "CSP2",
+        "display_filter": "dst port 2222"
+      },
+      {
+        "@For": "CSP3",
+        "display_filter": "dst port 0"
+      },
+      {
+        "@For": "Encapsulation",
+        "display_filter": "src port 44818"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "CSP1",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Rockwell",
+                "#text": "Rockwell-CSP1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CSP2",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Rockwell",
+                "#text": "Rockwell-CSP2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CSP3",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Rockwell",
+                "#text": "Rockwell-CSP3"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Encapsulation",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Rockwell",
+                "#text": "Rockwell-ENCAP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

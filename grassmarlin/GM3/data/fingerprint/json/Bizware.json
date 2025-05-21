@@ -1,0 +1,98 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Bizware",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of Bizware Task Manager traffic.This fingerprint looks for the evidence of Bizware Production Server traffic.This fingerprint looks for the evidence of Bizware Server Manager traffic.This fingerprint looks for the evidence of Bizware CTP Server traffic.This fingerprint looks for the evidence of Bizware PlantMetrics Server traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Task Manager",
+        "display_filter": "dst port 4123"
+      },
+      {
+        "@For": " Production Server",
+        "display_filter": "dst port 4120"
+      },
+      {
+        "@For": " Server Manager",
+        "display_filter": "dst port 4121"
+      },
+      {
+        "@For": " CTP Server",
+        "display_filter": "dst port 4125"
+      },
+      {
+        "@For": " PlantMetrics Server",
+        "display_filter": "dst port 4122"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Task Manager",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "BIZ-TASK-MANG",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Production Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "BIZ-PROD-SERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Server Manager",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "BIZ-SERV-MANG",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " CTP Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "BIZ-CTP-SERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " PlantMetrics Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "BIZ-PLANTMET",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "RTP",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of real time streaming communicating with media servers in conjunction with real time control protocol for media delivery."
+    },
+    "Filter": [
+      {
+        "@For": "RTSP",
+        "@Name": "Streaming Protocol",
+        "display_filter": "dst port 554"
+      },
+      {
+        "@For": "RTP",
+        "@Name": "Time Transport",
+        "display_filter": "dst port 5004"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "RTSP",
+        "Description": "Real time streaming protocol",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "RTSP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RTP",
+        "Description": "Real Time Transport",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Micosoft Server Product",
+                "#text": "RTP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

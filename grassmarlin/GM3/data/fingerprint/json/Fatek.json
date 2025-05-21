@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Fatek",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of the FATEK FB Series traffic."
+    },
+    "Filter": {
+      "@For": "FB Series",
+      "@Name": "FB Series",
+      "display_filter": "dst port 500"
+    },
+    "Payload": {
+      "@For": "FB Series",
+      "Description": "Identifies Fatek FB series PLC traffic.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Fatek FB Series"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "ProconOS",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of ProconOS traffic."
+    },
+    "Filter": {
+      "@For": "ProconOS",
+      "@Name": "destination.port",
+      "display_filter": "dst port 20547"
+    },
+    "Payload": {
+      "@For": "ProconOS",
+      "Description": "High performance PLC runtime engine desinged to run both embedded and PC applications",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "ProconOS"
+            }
+          }
+        }
+      }
+    }
+  }
+}

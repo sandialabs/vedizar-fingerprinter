@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Wonderware",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the devices using the wonderware protocol."
+    },
+    "Filter": [
+      {
+        "@For": "WonderwareDST",
+        "@Name": "Dst",
+        "display_filter": "dst port 5413"
+      },
+      {
+        "@For": "WonderwareSRC",
+        "@Name": "Src",
+        "display_filter": "src port 5413"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "WonderwareDST",
+        "Description": "Wonderware IO Talk traffic that looks for the specific destination port.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "WonderwareProtocol",
+                "#text": "SuiteLink"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "WonderwareSRC",
+        "Description": "Wonderware IO Talk traffic that looks for the specific source port.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "HMI",
+              "Detail": {
+                "@Name": "WonderwareProtocol",
+                "#text": "SuiteLink"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

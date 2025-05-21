@@ -1,0 +1,42 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "LS",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of LS GLOFA FEnet traffic over 2004. This fingerprint identifies evidence of LS XGB fenet over 2004. This fingerprint identifies evidence of LS XGK FEnet over 2004."
+    },
+    "Filter": [
+      {
+        "@For": "LS",
+        "@Name": "GLOFA FEnet",
+        "display_filter": "dst port 2004"
+      },
+      {
+        "@For": "LS",
+        "@Name": "XGB FEnet",
+        "display_filter": "dst port 2004"
+      },
+      {
+        "@For": "LS",
+        "@Name": "XGK FEnet",
+        "display_filter": "dst port 2004"
+      }
+    ],
+    "Payload": {
+      "@For": "LS",
+      "Description": "PLCs with built in master/slave capability via MODBUS. Depending on the PLC, the device can handle high processing in large networks.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Koyo Ethernet"
+            }
+          }
+        }
+      }
+    }
+  }
+}

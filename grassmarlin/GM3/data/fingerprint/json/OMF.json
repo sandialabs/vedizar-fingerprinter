@@ -1,0 +1,97 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "OMF",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of OMF Data B traffic. This fingerprint looks for evidence of OMF Data M traffic. This fingerprint looks for evidence of OMF Data H traffic. This fingerprint looks for evidence of OMF Data L traffic"
+    },
+    "Filter": [
+      {
+        "@For": "Data B",
+        "@Name": "ANET-B",
+        "display_filter": "dst port 3338"
+      },
+      {
+        "@For": "Data M",
+        "@Name": "ANET-M",
+        "display_filter": "dst port 3340"
+      },
+      {
+        "@For": "Data H",
+        "@Name": "ANET-H",
+        "display_filter": "dst port 3341"
+      },
+      {
+        "@For": "Data L",
+        "@Name": "ANET-L",
+        "display_filter": "dst port 0"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Data B",
+        "Description": "OMF Data B ANET-B",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ANET-B"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Data M",
+        "Description": "OMF Data M ANET-M",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ANET-M"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Data H",
+        "Description": "OMF Data H ANET-H",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ANET-H"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Data L",
+        "Description": "OMF Data L ANET-L",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ANET-L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

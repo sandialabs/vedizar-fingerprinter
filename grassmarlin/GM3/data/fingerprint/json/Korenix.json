@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Korenix",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Korenix 6550 traffic."
+    },
+    "Filter": {
+      "@For": "Korenix",
+      "@Name": "6550",
+      "display_filter": "dst port 502"
+    },
+    "Payload": {
+      "@For": "Korenix",
+      "Description": "Korenix 6550 PLC series for communication monitoring.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Korenix 6550"
+            }
+          }
+        }
+      }
+    }
+  }
+}

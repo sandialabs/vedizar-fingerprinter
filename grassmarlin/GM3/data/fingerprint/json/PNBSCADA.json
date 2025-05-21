@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "PNBSCADA",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of PNBSCADA traffic."
+    },
+    "Filter": {
+      "@For": "PNBSCADA",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3875"
+    },
+    "Payload": {
+      "@For": "PNBSCADA",
+      "Description": "Tags PNBSCADA by TCP/UDP destination port",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "PNBSCADA"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "BACNET",
+      "Author": "Default",
+      "Description": "Finds BACNET traffic and attemps to extract the Device Name and Number."
+    },
+    "Filter": {
+      "@For": "BACNET",
+      "@Name": "Dst/Src",
+      "display_filter": "(dst port 47808) && (src port 47808)"
+    },
+    "Payload": {
+      "@For": "BACNET",
+      "Description": "Tags BACNET traffic",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "1",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "BACNET"
+            }
+          }
+        }
+      },
+      "Match": [
+        {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "1007"
+          },
+          "AndThen": {
+            "ByteJump": {
+              "@PostOffset": "0",
+              "@Relative": "false",
+              "@Endian": "BIG",
+              "@Offset": "9",
+              "@Bytes": "1",
+              "AndThen": {
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "1",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Role": "SERVER"
+                  },
+                  "Extract": {
+                    "@Name": "Device Name",
+                    "@From": "10",
+                    "@To": "CURSOR_MAIN",
+                    "@MaxLength": "256",
+                    "@Endian": "BIG",
+                    "Post": {
+                      "@Lookup": "BACNET"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "1000C40200"
+          },
+          "AndThen": {
+            "Anchor": {
+              "@Cursor": "END",
+              "@Position": "START_OF_PAYLOAD",
+              "@Relative": "true",
+              "@Offset": "2"
+            },
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "1",
+              "Details": {
+                "Category": "ICS_HOST",
+                "Role": "CLIENT",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "BACNET"
+                }
+              },
+              "Extract": {
+                "@Name": "Device ID",
+                "@From": "CURSOR_MAIN",
+                "@To": "CURSOR_END",
+                "@MaxLength": "2",
+                "@Endian": "BIG",
+                "Post": {
+                  "@Convert": "INTEGER"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

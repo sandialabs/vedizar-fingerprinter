@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "HMS HICP Port",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of HMS HICP Port traffic."
+    },
+    "Filter": {
+      "@For": "HICP",
+      "@Name": "HMC HICP Port",
+      "display_filter": "dst port 3250"
+    },
+    "Payload": {
+      "@For": "HICP",
+      "Description": "Acts as a translator between industrial control systems. It also detects any Ethernet device on a local network.",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "HMS HICP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

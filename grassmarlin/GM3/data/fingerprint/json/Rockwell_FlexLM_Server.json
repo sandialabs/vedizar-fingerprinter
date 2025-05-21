@@ -1,0 +1,244 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell FlexLM Server",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of FlexLM server traffic.",
+      "Tag": "Original"
+    },
+    "Filter": [
+      {
+        "@For": "FlexLM Server 1",
+        "@Name": "Server 1",
+        "display_filter":  "(tcp) && (dst port 27000) "
+      },
+      {
+        "@For": "FlexLM Server 2",
+        "@Name": "Server 2",
+        "display_filter":  "(tcp) && (dst port 27001) "
+      },
+      {
+        "@For": "FlexLM Server 3",
+        "@Name": "Server 3",
+        "display_filter":  "(tcp) && (dst port 27002) "
+      },
+      {
+        "@For": "FlexLM Server 4",
+        "@Name": "Server 4",
+        "display_filter":  "(tcp) && (dst port 27003) "
+      },
+      {
+        "@For": "FlexLM Server 5",
+        "@Name": "Server 5",
+        "display_filter":  "(tcp) && (dst port 27004) "
+      },
+      {
+        "@For": "FlexLM Server 6",
+        "@Name": "Server 6",
+        "display_filter":  "(tcp) && (dst port 27005) "
+      },
+      {
+        "@For": "FlexLM Server 7",
+        "@Name": "Server 7",
+        "display_filter":  "(tcp) && (dst port 27006) "
+      },
+      {
+        "@For": "FlexLM Server 8",
+        "@Name": "Server 8",
+        "display_filter":  "(tcp) && (dst port 27007) "
+      },
+      {
+        "@For": "FlexLM Server 9",
+        "@Name": "Server 9",
+        "display_filter":  "(tcp) && (dst port 27008) "
+      },
+      {
+        "@For": "FlexLM Server 10",
+        "@Name": "Server 10",
+        "display_filter":  "(tcp) && (dst port 27009) "
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "FlexLM Server 1",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 2",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 3",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 4",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 5",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 6",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 7",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 8",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 9",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FlexLM Server 10",
+        "Description": "Rockwell FlexLM Server payload that tags the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "3",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell FlexLM Server"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

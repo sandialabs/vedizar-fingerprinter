@@ -1,0 +1,36 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "S7Comm",
+      "Author": "Default",
+      "Description": "ISO 8073 COTP 020f80 \nprotocol usually rides on port 102\n\ns7 communication 32 is the protocol id\n\n020f80 32",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "display_filter": "dst port 102"
+    },
+    "Payload": {
+      "@For": "default",
+      "Match": {
+        "@Offset": "0",
+        "@Within": "65535",
+        "@MoveCursors": "true",
+        "Content": {
+          "@Type": "HEX",
+          "#text": "02F0803201"
+        },
+        "AndThen": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "Siemens",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      }
+    }
+  }
+}

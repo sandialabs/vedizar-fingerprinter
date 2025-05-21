@@ -1,0 +1,79 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "PROFInet",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of PROFInet RT Multicast traffic. This fingerprint looks for the evidence of PROFInet RT Unicast traffic. This fingerprint looks for the evidence of PROFInet Context Manager traffic."
+    },
+    "Filter": [
+      {
+        "@For": "RT Multicast",
+        "@Name": "Multicast",
+        "display_filter": "src port 34963"
+      },
+      {
+        "@For": "RT Unicast",
+        "@Name": "Unicast",
+        "display_filter": "dst port 34962"
+      },
+      {
+        "@For": "Context Manager",
+        "@Name": "Manager",
+        "display_filter": "src port 34964"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "RT Multicast",
+        "Description": "PROFInet RT Multicast over source port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "RT Multicast"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RT Unicast",
+        "Description": "PROFInet RT Unicast over destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "RT Unicast"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Context Manager",
+        "Description": "PROFInet Context Manager over source port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Context Manager"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "MMS",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Microsoft media Server as part of a service."
+    },
+    "Filter": {
+      "@For": "MMS",
+      "@Name": "MMS",
+      "display_filter": "dst port 1755"
+    },
+    "Payload": {
+      "@For": "MMS",
+      "Description": "Tags Microsoft Media Server",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Micrsoft Server Product",
+              "#text": "Microsoft Media Server"
+            }
+          }
+        }
+      }
+    }
+  }
+}

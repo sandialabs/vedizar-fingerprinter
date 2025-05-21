@@ -1,0 +1,113 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Allen",
+      "Author": "Default",
+      "Description": "This is the response seen from a device running an Allen Bradley specific web server and providing its device description via a web page. \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED). \n\tThis is the response seen from a device running an Allen Bradley specific web server. \"Server: A-B WWW/0.1\" \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED). \n\tThis is the response seen from a device running an Allen Bradley specific web server and providing its device name via a web page. \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED)."
+    },
+    "Filter": [
+      {
+        "@For": " Bradley Web Server Device Description",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      },
+      {
+        "@For": " Bradley Web Server",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      },
+      {
+        "@For": " Bradley Web Server Device Name",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Bradley Web Server Device Description",
+        "Match": {
+          "@Offset": "0",
+          "@MoveCursors": "true",
+          "Pattern": "Description</td><td>",
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Confidence": "4",
+                  "Extract": {
+                    "@Name": "Version",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Bradley Web Server",
+        "Match": {
+          "@Offset": "17",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "5365727665723A20412D42205757572F302E310D0A"
+          },
+          "AndThen": {
+            "Return": {
+              "@Confidence": "4",
+              "Extract": {
+                "@Name": "Allen Bradley",
+                "@From": "CURSOR_START",
+                "@To": "CURSOR_END"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Bradley Web Server Device Name",
+        "Match": {
+          "@Offset": "184",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "73733D52363E446576696365204E616D653C2F74643E3C74643E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Confidence": "4",
+                  "Extract": {
+                    "@Name": "Model",
+                    "@From": "210",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

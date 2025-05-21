@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "LDAP",
+      "Author": "Default",
+      "Description": "Local Security Authority/Distributed File System."
+    },
+    "Filter": {
+      "@For": "LDAP",
+      "@Name": "LDAP",
+      "display_filter": "dst port 389"
+    },
+    "Payload": {
+      "@For": "LDAP",
+      "Description": "Tags LDAP communication to the server",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "LDAP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

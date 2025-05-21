@@ -1,0 +1,277 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Operating System",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Operating system by TCP default Window_Size and IP header TTL values. Various Payloads include XP, Vista, 7..."
+    },
+    "Filter": [
+      {
+        "@For": "Windows",
+        "@Name": "95",
+        "display_filter": "ip[8] >= 17 && ip[8] <= 32"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "98",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "2000",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "XP",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "Vista/7/10/Server",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "7",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "10",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Windows",
+        "@Name": "Server",
+        "display_filter": "ip[8] >= 113 && ip[8] <= 128"
+        
+      },
+      {
+        "@For": "Linux",
+        "@Name": "2.4/2.7",
+        "display_filter": "ip[8] >= 49 && ip[8] <= 64"
+        
+      },
+      {
+        "@For": "Google Linux",
+        "@Name": "Google Nix",
+        "display_filter": "ip[8] >= 49 && ip[8] <= 64"
+        
+      },
+      {
+        "@For": "FreeBSD",
+        "@Name": "BSD",
+        "display_filter": "ip[8] >= 49 && ip[8] <= 64"
+        
+      },
+      {
+        "@For": "CISCO Router",
+        "@Name": "IOS 12.4",
+        "display_filter": "ip[8] >= 140 && ip[8] <= 255"
+        
+      },
+      {
+        "@For": "Solaris",
+        "@Name": "2.8",
+        "display_filter": "ip[8] >= 49 && ip[8] <= 64"
+        
+      },
+      {
+        "@For": "Solaris",
+        "@Name": "7.0",
+        "display_filter": "ip[8] >= 140 && ip[8] <= 255"
+        
+      },
+      {
+        "@For": "Stratus",
+        "@Name": "14.2",
+        "display_filter": "ip[8] >= 15 && ip[8] <= 30"
+        
+      },
+      {
+        "@For": "Stratus",
+        "@Name": "14.3",
+        "display_filter": "ip[8] >= 49 && ip[8] <= 64"
+        
+      },
+      {
+        "@For": "SunOS",
+        "@Name": "4.1.3",
+        "display_filter": "ip[8] >= 45 && ip[8] <= 60"
+        
+      },
+      {
+        "@For": "SunOS",
+        "@Name": "4.1.4",
+        "display_filter": "ip[8] >= 45 && ip[8] <= 60"
+        
+      },
+      {
+        "@For": "Ultrix",
+        "@Name": "4.1, 4.1A",
+        "display_filter": "(tcp) && (ip[8] >= 45 && ip[8] <= 60)"
+        
+      },
+      {
+        "@For": "Ultrix",
+        "@Name": "4.2, 4.2A",
+        "display_filter": "(udp) && (ip[8] >= 15 && ip[8] <= 30)"
+        
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Windows",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Windows 2000, XP, Vista, 7, 10, Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Linux",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Linux 2.4/2.6"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Google Linux",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Google Linux"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FreeBSD",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "FreeBSD"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CISCO Router",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "CISCO Router IOS 12.4"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Solaris",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Solaris"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Stratus",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Stratus"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "SunOS",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "SunOS"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Ultrix",
+        "Description": "Tags TTL value in the IP header",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "OS",
+                "#text": "Ultrix"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

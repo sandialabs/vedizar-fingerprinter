@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "ADA Control",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of ADA Control traffic."
+    },
+    "Filter": {
+      "@For": "ADA-CIP",
+      "@Name": "destination.port",
+      "display_filter": "dst port 2085"
+    },
+    "Payload": {
+      "@For": "ADA-CIP",
+      "Description": "TCP/UDP ADA-CIP",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "ADA-CIP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

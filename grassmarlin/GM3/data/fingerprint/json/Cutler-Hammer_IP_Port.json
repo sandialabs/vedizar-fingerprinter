@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Cutler-Hammer IP Port",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Cutler-Hammer IP Port traffic."
+    },
+    "Filter": {
+      "@For": "IPCS Command",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3743"
+    },
+    "Payload": {
+      "@For": "IPCS Command",
+      "Description": "Tags the Cutler-Hammer IP Port",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSCommand",
+              "#text": "IPCS Command"
+            }
+          }
+        }
+      }
+    }
+  }
+}

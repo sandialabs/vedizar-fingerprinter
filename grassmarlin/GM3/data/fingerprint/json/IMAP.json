@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "IMAP",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of communication between the exchange server."
+    },
+    "Filter": {
+      "@For": "IMAP",
+      "@Name": "IMAP",
+      "display_filter": "dst port 143"
+    },
+    "Payload": {
+      "@For": "IMAP",
+      "Description": "Tags IMAP exchange server communication used to manage email server/receive email.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "IMAP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

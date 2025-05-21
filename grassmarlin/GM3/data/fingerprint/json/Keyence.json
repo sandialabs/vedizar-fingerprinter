@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Keyence",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Keyence KV-5000 series traffic over 8501."
+    },
+    "Filter": {
+      "@For": "Keyence",
+      "@Name": "KV-5000",
+      "display_filter": "dst port 8501"
+    },
+    "Payload": {
+      "@For": "Keyence",
+      "Description": "PLC traffic for real time control over 8501.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Keyence KV-5000"
+            }
+          }
+        }
+      }
+    }
+  }
+}

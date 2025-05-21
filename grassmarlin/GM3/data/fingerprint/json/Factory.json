@@ -1,0 +1,64 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Factory",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of Factory Talk Event Server traffic.This fingerprint looks for the evidence of Factory Talk Directory Server File transfer traffic.This fingerprint looks for the evidence of Factory Talk Directory Server traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Talk Event Server",
+        "display_filter": "src port 7700"
+      },
+      {
+        "@For": " Talk Directory Server File Transfer",
+        "display_filter": "dst port 3060"
+      },
+      {
+        "@For": " Talk Directory Server",
+        "display_filter": "src port 7710"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Talk Event Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "FT-EVENT-SERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Talk Directory Server File Transfer",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "RNADIRFT",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Talk Directory Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "FT-DIR-SERV",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

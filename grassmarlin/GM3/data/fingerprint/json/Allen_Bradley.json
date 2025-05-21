@@ -1,0 +1,182 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Allen Bradley",
+      "Author": "Default",
+      "Description": "This is the response seen from a device running an Allen Bradley specific web server and providing its device description via a web page. \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED). \n\tThis is the response seen from a device running an Allen Bradley specific web server. \"Server: A-B WWW/0.1\" \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED). \n\tThis is the response seen from a device running an Allen Bradley specific web server and providing its device name via a web page. \nThis is evidence of some sort of Allen Bradley Intelligent Electronic Device (IED)."
+    },
+    "Filter": [
+      {
+        "@For": "Bradley Web Server Device Description",
+        "@Name": "Server Device",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      },
+      {
+        "@For": "Bradley Web Server",
+        "@Name": "Web Server",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      },
+      {
+        "@For": "Bradley Web Server Device Name",
+        "@Name": "Server Device Name",
+        "display_filter":  "((tcp) && (ether proto 2048)) && (src port 80)"
+      },
+      {
+        "@For": "All newer Rockwell PLC",
+        "@Name": "Rockwell PLC",
+        "display_filter": "(tcp) && (dst port 44818)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Bradley Web Server Device Description",
+        "Description": "Bradley Web Server Device Description",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Pattern": "Description</td><td>",
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "4",
+                  "Details": {
+                    "Category": "IED",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "ICSProtocol",
+                      "#text": "Bradley Web Server Device Description"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Bradley Web Server",
+        "Description": "Bradley Web Server",
+        "Match": {
+          "@Offset": "17",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "5365727665723A20412D42205757572F302E310D0A"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "4",
+              "Details": {
+                "Category": "IED",
+                "Role": "SERVER",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "Bradley Web Server"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Bradley Web Server Device Name",
+        "Description": "Bradley Web Server Device Name",
+        "Match": {
+          "@Offset": "184",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "73733D52363E446576696365204E616D653C2F74643E3C74643E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "4",
+                  "Details": {
+                    "Category": "IED",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "ICSProtocol",
+                      "#text": "Bradely Web Server Device Name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "All newer Rockwell PLC",
+        "Description": "Allen Bradley Rockwell PLC",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Allen Bradley Rockwell PLC"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

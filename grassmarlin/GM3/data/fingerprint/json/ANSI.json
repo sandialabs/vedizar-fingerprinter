@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "ANSI",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidenece of ANSI x3.28, z39.50, and c1222-asse traffic."
+    },
+    "Filter": [
+      {
+        "@For": "ANSI 1",
+        "@Name": "z39.50",
+        "display_filter": "dst port 210"
+      },
+      {
+        "@For": "ANSI 2",
+        "@Name": "c1222-asse",
+        "display_filter": "dst port 1153"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "ANSI 1",
+        "Description": "Developed by Allen Bradley to communicate between stations and substations. Z39.50",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "ISCProtocol",
+                "#text": "ANSI"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "ANSI 2",
+        "Description": "Developed by Allen Bradley to communicate between stations and substations. C1222-ASSE.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ANSI"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

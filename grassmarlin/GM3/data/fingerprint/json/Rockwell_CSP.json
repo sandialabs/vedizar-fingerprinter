@@ -1,0 +1,94 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell CSP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of Rockwell CSP1, CSP2, and CSP3 traffic."
+    },
+    "Filter": [
+      {
+        "@For": "CSP1",
+        "@Name": "CSP1 Src",
+        "display_filter": "src port 2221"
+      },
+      {
+        "@For": "CSP1",
+        "@Name": "CSP1 Dst",
+        "display_filter": "dst port 2221"
+      },
+      {
+        "@For": "CSP2",
+        "@Name": "CSP2 Src",
+        "display_filter": "src port 2222"
+      },
+      {
+        "@For": "CSP2",
+        "@Name": "CSP2 Dst",
+        "display_filter": "dst port 2222"
+      },
+      {
+        "@For": "CSP3",
+        "@Name": "CSP3 Src",
+        "display_filter": "src port 2223"
+      },
+      {
+        "@For": "CSP3",
+        "@Name": "CSP3 Dst",
+        "display_filter": "dst port 2223"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "CSP1",
+        "Description": "Rockwell CSP1 that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell CSP1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CSP2",
+        "Description": "Rockwell CSP2 that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell CSP2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "CSP3",
+        "Description": "Rockwell CSP3 that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell CSP3"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

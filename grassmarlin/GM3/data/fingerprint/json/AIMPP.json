@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "AIMPP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of TCP/UDP AIMPP Hello traffic. This fingerprint looks for evidence of TCP/UDP AIMPP Port Req traffic."
+    },
+    "Filter": [
+      {
+        "@For": "Hello",
+        "@Name": "Hello 2846",
+        "display_filter": "dst port 2846"
+      },
+      {
+        "@For": "Port Req",
+        "@Name": "Port Req 2847",
+        "display_filter": "dst port 2847"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Hello",
+        "Description": "Hello AIMPP that hits on destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "AIMPP Hello"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Port Req",
+        "Description": "Port Req AIMPP that hits on destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "AIMPP Port Req"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

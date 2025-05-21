@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "DHCP",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of DHCP communication and DHCP traffic deployed at a MADCAP server."
+    },
+    "Filter": [
+      {
+        "@For": "DHCP",
+        "@Name": "DHCP",
+        "display_filter": "(udp) && (dst port 67)"
+      },
+      {
+        "@For": "MADCAP",
+        "@Name": "MADCAP",
+        "display_filter": "(udp) && (dst port 2535)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "DHCP",
+        "Description": "Tags DHCP traffic",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "DHCP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MADCAP",
+        "Description": "Tags DHCP in MADCAP server deployment",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "DHCP MADCAP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

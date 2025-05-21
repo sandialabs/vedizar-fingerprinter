@@ -1,0 +1,127 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Beckhoff",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of EtherCAT traffic."
+    },
+    "Filter": [
+      {
+        "@For": "EtherCAT TCP Master",
+        "@Name": "TCP Master",
+        "display_filter": "(tcp) && (dst port 34980)"
+      },
+      {
+        "@For": "EtherCAT TCP Slave",
+        "@Name": "TCP Slave",
+        "display_filter": "(tcp) && (src port 34980)"
+      },
+      {
+        "@For": "EtherCAT UDP Master",
+        "@Name": "UDP Master",
+        "display_filter": "(udp) && (dst port 34980)"
+      },
+      {
+        "@For": "EtherCAT UDP Slave",
+        "@Name": "UDP Slave",
+        "display_filter": "(udp) && (src port 34980)"
+      },
+      {
+        "@For": "Embedded PC",
+        "@Name": "PC",
+        "display_filter": "dst port 48898"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "EtherCAT TCP Master",
+        "Description": "EtherCAT Master that matches TCP and port number",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "BECKHOFF EtherCAT"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "EtherCAT TCP Slave",
+        "Description": "EtherCAT Slave that matches TCP and port number",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "BECKHOFF EtherCAT"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "EtherCAT UDP Master",
+        "Description": "EtherCAT Master that matches UDP and port number",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "BECKHOFF EtherCAT"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "EtherCAT UDP Slave",
+        "Description": "EtherCAT Slave that matches UDP and port number",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "BECKHOFF EtherCAT"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Embedded PC",
+        "Description": "BECKHOFF Embedded PC over destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "BECKHOFF Embedded PC"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

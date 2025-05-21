@@ -1,0 +1,49 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "RSSql",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of RSSql transaction Manager traffic.This fingerprint looks for the evidence of RSSql Compression Server traffic.This fingerprint looks for the evidence of RSSql Configuration Server traffic."
+    },
+    "Filter": [
+      {
+        "@For": " Transaction Manager",
+        "display_filter": "dst port 400"
+      },
+      {
+        "@For": " Compression Server",
+        "display_filter": "dst port 401"
+      },
+      {
+        "@For": " Configuration Server",
+        "display_filter": "dst port 402"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Transaction Manager",
+        "Always": {
+          "Return": {
+            "@Confidence": "2"
+          }
+        }
+      },
+      {
+        "@For": " Compression Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "2"
+          }
+        }
+      },
+      {
+        "@For": " Configuration Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "2"
+          }
+        }
+      }
+    ]
+  }
+}

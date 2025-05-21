@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "DLIP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of DLIP traffic."
+    },
+    "Filter": [
+      {
+        "@For": "DLIP Src",
+        "@Name": "DLIP Src",
+        "display_filter": "src port 7201"
+      },
+      {
+        "@For": "DLIP Dst",
+        "@Name": "DLIP Dst",
+        "display_filter": "dst port 7201"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "DLIP Src",
+        "Description": "Tags Intelligent Data Acquisition and Control",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "DLIP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DLIP Dst",
+        "Description": "Tags Intelligent Data Acquisition and Control",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "DLIP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "ASP.Net",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of session states that stores data out of process."
+    },
+    "Filter": {
+      "@For": "ASP.Net",
+      "@Name": "State Service",
+      "display_filter": "dst port 42424"
+    },
+    "Payload": {
+      "@For": "ASP.Net",
+      "Description": "Payload supports asp.net state service",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Microsoft Server Product",
+              "#text": "ASP.NET"
+            }
+          }
+        }
+      }
+    }
+  }
+}

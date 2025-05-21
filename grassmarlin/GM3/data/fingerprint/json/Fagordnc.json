@@ -1,0 +1,27 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Fagordnc",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of FAGORDNC traffic.",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "display_filter": "dst port 3873"
+    },
+    "Payload": {
+      "@For": "default",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Extract": {
+            "@Name": "FAGORDNC",
+            "@From": "CURSOR_START",
+            "@To": "CURSOR_END"
+          }
+        }
+      }
+    }
+  }
+}

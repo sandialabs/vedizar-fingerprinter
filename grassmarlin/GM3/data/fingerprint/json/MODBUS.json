@@ -1,0 +1,83 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "MODBUS",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of MODBUS traffic on port 502."
+    },
+    "Filter": [
+      {
+        "@For": "TCP Slave Unit Number",
+        "@Name": "TCP Slave",
+        "display_filter": "(tcp) && (src port 502)"
+      },
+      {
+        "@For": "UDP Client/Server Unit Number",
+        "@Name": "UDP Client/Server",
+        "display_filter": "(udp) && (src port 502)"
+      },
+      {
+        "@For": "TCP Master",
+        "@Name": "TCP Master",
+        "display_filter": "(tcp) && (dst port 502)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "TCP Master",
+        "Description": "MODBUS TCP Master",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "MODBUS"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "UDP Client/Server Unit Number",
+        "Description": "MODBUS UDP Client or Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "MODBUS"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "TCP Slave Unit Number",
+        "Description": "MODBUS TCP Slave Unit Number",
+        "Always": {
+          "Return": {
+            "@Confidence": "4",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "MODBUS"
+              }
+            },
+            "Extract": {
+              "@Name": "Unit",
+              "@From": "6",
+              "@To": "7"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

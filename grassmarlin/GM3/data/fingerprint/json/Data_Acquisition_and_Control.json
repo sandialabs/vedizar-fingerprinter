@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Data Acquisition and Control",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Data Acquisition and Control traffic."
+    },
+    "Filter": {
+      "@For": "IDAC",
+      "@Name": "Intelligent Data Acquisition and Control",
+      "display_filter": "dst port 3881"
+    },
+    "Payload": {
+      "@For": "IDAC",
+      "Description": "Tags Intelligent Data Acquisition and Control",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "Intelligent Data Acquisition and Control"
+            }
+          }
+        }
+      }
+    }
+  }
+}

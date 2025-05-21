@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "OLAP",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of OLAP service which provides SQL service client support for answering multi dimensional analytical queries."
+    },
+    "Filter": [
+      {
+        "@For": "OLAP 1",
+        "@Name": "destination.port",
+        "display_filter": "(tcp) && (dst port 2393)"
+      },
+      {
+        "@For": "OLAP 2",
+        "@Name": "destination.port",
+        "display_filter": "(tcp) && (dst port 2394)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "OLAP 1",
+        "Description": "Tags OLAP SQL services",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "OLAP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "OLAP 2",
+        "Description": "Tags OLAP SQL services",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Microsoft Server Product",
+                "#text": "OLAP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

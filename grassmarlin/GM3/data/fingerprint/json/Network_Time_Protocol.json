@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Network Time Protocol",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Network Time Protocol traffic."
+    },
+    "Filter": {
+      "@For": "NTP",
+      "@Name": "Ports",
+      "display_filter": "(src port 0) && (dst port 123)"
+    },
+    "Payload": {
+      "@For": "NTP",
+      "Description": "This fingerprint looks for the evidence of Network Time Protocol traffic.",
+      "Always": {
+        "Return": {
+          "@Confidence": "4",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "NTP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

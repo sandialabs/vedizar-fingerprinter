@@ -1,0 +1,421 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Browser Protocol",
+      "Author": "Default",
+      "Description": "This fingerprint tags the Host Name and the OS version in the Browser protocol."
+    },
+    "Filter": [
+      {
+        "@For": "Browser Protocol",
+        "@Name": "source.port",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol",
+        "@Name": "destination.port",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "Browser Protocol2",
+        "@Name": "source.port2",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol2",
+        "@Name": "destination.port2",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "Browser Protocol3",
+        "@Name": "source.port3",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol3",
+        "@Name": "destination.port3",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "Browser Protocol4",
+        "@Name": "source.port4",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol4",
+        "@Name": "destination.port4",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "Browser Protocol5",
+        "@Name": "source.port5",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol5",
+        "@Name": "destination.port5",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "Browser Protocol6",
+        "@Name": "source.port6",
+        "display_filter": "(udp) && (src port 138)"
+      },
+      {
+        "@For": "Browser Protocol6",
+        "@Name": "destination.port6",
+        "display_filter": "(udp) && (dst port 138)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Browser Protocol",
+        "Description": "Tags 0F00C0D4 Hex pattern in payload. Extracting from bytes 174-182 for Windows Name and bytes 190-192 for Version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0F00C0D4"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Host Name",
+                  "@From": "174",
+                  "@To": "182",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "@For": "Browser Protocol2",
+        "Description": "Tags 0F0080FC Hex pattern in payload. Extracting from bytes 174-190 for Windows Name and bytes 190-192 for Version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0F0080FC"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Host Name",
+                  "@From": "174",
+                  "@To": "190",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "@For": "Browser Protocol3",
+        "Description": "Tags 010080FC Hex pattern in payload. Extracting from bytes 174-189 for Windows Name and bytes 190-192 for Version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "010080FC"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Host Name",
+                  "@From": "174",
+                  "@To": "189",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "@For": "Browser Protocol4",
+        "Description": "Tags 0F162012 Hex pattern in payload. Extracting from bytes 174-189 for Windows Name and bytes 190-192 for Version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0F162012"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Host Name",
+                  "@From": "174",
+                  "@To": "189",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "@For": "Browser Protocol5",
+        "Description": "Tags 010080A9 Hex pattern in payload. Extracting from bytes 174-190 for Windows Name and bytes 190-192 for Version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "010080A9"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Host Name",
+                  "@From": "174",
+                  "@To": "190",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "@For": "Browser Protocol6",
+        "Description": "Tags the Domain/Workgroup Accouncement in the Browser Protocol and matches on 0C00A0BB Hex pattern in payload. Extracts bytes 174-190 for Domain/Workgroup and bytes 190-192 for Windows version number.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "MicrosoftProtocol",
+                "#text": "Microsoft Windows Browser Protocol"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "true",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0C00A0BB"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "Domain/Workgroup",
+                  "@From": "174",
+                  "@To": "190",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "STRING"
+                  }
+                },
+                {
+                  "@Name": "Windows Version",
+                  "@From": "190",
+                  "@To": "192",
+                  "@MaxLength": "1024",
+                  "@Endian": "BIG",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

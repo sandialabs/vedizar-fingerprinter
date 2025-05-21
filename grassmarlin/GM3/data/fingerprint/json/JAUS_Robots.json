@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "JAUS Robots",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of JAUS Robots traffic."
+    },
+    "Filter": {
+      "@For": "JAUS Robots",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3794"
+    },
+    "Payload": {
+      "@For": "JAUS Robots",
+      "Description": "This fingerprint looks for evidence of JAUS Robots traffic.",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "JAUS Robots"
+            }
+          }
+        }
+      }
+    }
+  }
+}

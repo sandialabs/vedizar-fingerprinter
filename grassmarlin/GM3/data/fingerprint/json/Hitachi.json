@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Hitachi",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Hitachi EHV Series traffic."
+    },
+    "Filter": {
+      "@For": "Hitachi",
+      "@Name": "EHV Series",
+      "display_filter": "dst port 3004"
+    },
+    "Payload": {
+      "@For": "Hitachi",
+      "Description": "General purpose PLC that uses Codesys",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "PLC",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "Hitachi EHV Series"
+            }
+          }
+        }
+      }
+    }
+  }
+}

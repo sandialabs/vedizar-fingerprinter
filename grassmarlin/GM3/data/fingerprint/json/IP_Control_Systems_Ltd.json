@@ -1,0 +1,30 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "IP Control Systems Ltd",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of IP Control Systems traffic. Write standard input info about active interprocess communication facilities."
+    },
+    "Filter": {
+      "@For": "ICS Command",
+      "@Name": "destination.port",
+      "display_filter": "dst port 3743"
+    },
+    "Payload": {
+      "@For": "ICS Command",
+      "Description": "This fingerprint looks for the evidence of IP Control Systems traffic.",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "IP Control Systems Ltd"
+            }
+          }
+        }
+      }
+    }
+  }
+}

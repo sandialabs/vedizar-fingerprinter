@@ -1,0 +1,28 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Extensible Automation",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Extensible Automation traffic."
+    },
+    "Filter": {
+      "@For": "Extensible Automation",
+      "@Name": "xAP-HA",
+      "display_filter": "dst port 3639"
+    },
+    "Payload": {
+      "@For": "Extensible Automation",
+      "Description": "Supports integration of telemetry and control devices for building automation",
+      "Always": {
+        "Return": {
+          "@Confidence": "5",
+          "Category": "ICS_HOST",
+          "Detail": {
+            "@Name": "ICSProtocol",
+            "#text": "xAP-HA"
+          }
+        }
+      }
+    }
+  }
+}

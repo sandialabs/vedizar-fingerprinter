@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "CNRP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of CNRP traffic"
+    },
+    "Filter": {
+      "@For": "Common Name Resolution Protocol",
+      "@Name": "destination.port",
+      "display_filter": "dst port 2757"
+    },
+    "Payload": {
+      "@For": "Common Name Resolution Protocol",
+      "Description": "Tags the Common Name Resolution Protocol",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "Name Resolution Protocol",
+              "#text": "Common Name Resolution Protocol"
+            }
+          }
+        }
+      }
+    }
+  }
+}

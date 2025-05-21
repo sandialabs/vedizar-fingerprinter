@@ -1,0 +1,22 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "LonWorks2",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of LonWorks2 traffic.",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "display_filter": "dst port 2541"
+    },
+    "Payload": {
+      "@For": "default",
+      "Always": {
+        "Return": {
+          "@Confidence": "3"
+        }
+      }
+    }
+  }
+}

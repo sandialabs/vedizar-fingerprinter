@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Fagor",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence for Fagor DNC traffic."
+    },
+    "Filter": {
+      "@For": "Fagor",
+      "@Name": "DNC",
+      "display_filter": "dst port 3873"
+    },
+    "Payload": {
+      "@For": "Fagor",
+      "Description": "Fagor DNC over 3873",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "Product",
+              "#text": "DNC"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Mitsubishi Electronic",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of MELSEC-Q network protocol communication. The devices are used by equipment and manufacturing facilities to provide high-speed, large volume data processing and machine control."
+    },
+    "Filter": [
+      {
+        "@For": "MELSEC-Q MASTER 5006",
+        "@Name": "MASTER 5006",
+        "display_filter": "dst port 5006"
+      },
+      {
+        "@For": "MELSEC-Q MASTER 5007",
+        "@Name": "MASTER 5007",
+        "display_filter": "dst port 5007"
+      },
+      {
+        "@For": "MELSEC-Q SLAVE 5006",
+        "@Name": "SLAVE 5006",
+        "display_filter": "src port 5007"
+      },
+      {
+        "@For": "MELSEC-Q SLAVE 5007",
+        "@Name": "SLAVE 5007",
+        "display_filter": "src port 5007"
+      },
+      {
+        "@For": "MELSEC-Q",
+        "@Name": "4999",
+        "display_filter": "dst port 4999"
+      },
+      {
+        "@For": "QJ71E71",
+        "@Name": "4999",
+        "display_filter": "dst port 4999"
+      },
+      {
+        "@For": "FX",
+        "@Name": "FX 1025",
+        "display_filter": "dst port 1025"
+      },
+      {
+        "@For": "FX3u",
+        "@Name": "Fx3u 5001",
+        "display_filter": "dst port 5001"
+      },
+      {
+        "@For": "FL-Net Cyclic Transmission",
+        "@Name": "Cyclic Transmission",
+        "display_filter": "dst port 55000"
+      },
+      {
+        "@For": "FL-Net Message Transmission",
+        "@Name": "Message Transmission",
+        "display_filter": "dst port 55001"
+      },
+      {
+        "@For": "FL-Net Participation Request Frame",
+        "@Name": "Participation Request Frame",
+        "display_filter": "dst port 55002"
+      },
+      {
+        "@For": "FL-Net Sending Service",
+        "@Name": "Sending Service",
+        "display_filter": "dst port 55003"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "MELSEC-Q MASTER 5006",
+        "Description": "MELSEC-Q payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "MELSEC-Q"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MELSEC-Q MASTER 5007",
+        "Description": "MELSEC-Q payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "MTU",
+              "Role": "MASTER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "MELSEC-Q"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MELSEC-Q SLAVE 5006",
+        "Description": "MELSEC-Q payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "MELSEC-Q"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MELSEC-Q SLAVE 5007",
+        "Description": "MELSEC-Q payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Role": "SLAVE",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "MELSEC-Q"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "MELSEC-Q",
+        "Description": "MELSEC-Q payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "MELSEC-Q"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "QJ71E71",
+        "Description": "QJ71E71 payload that tags the destination port and always returns details.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "QJ71E71"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FX",
+        "Description": "PLC that incorporates power supply, cpu, I/O into a single unit.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "FX"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FX3u",
+        "Description": "Part of the MELSEC-F PLCs, that has exchangable communication boards that mount directly into the main unit (Ethernet or Serial).",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "FX3u"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FL-Net Cyclic Transmission",
+        "Description": "FA link protocol is a standardized by the Japan FA Open System Promotion Group of the manufacturing Science and Technology Center. The FL link protocol is intended for the FL net to be used for data exchange between various control modules.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Cyclic Transmission"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FL-Net Message Transmission",
+        "Description": "FA link protocol is a standardized by the Japan FA Open System Promotion Group of the manufacturing Science and Technology Center. The FL link protocol is intended for the FL net to be used for data exchange between various control modules.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Message Transmission"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FL-Net Participation Request Frame",
+        "Description": "FA link protocol is a standardized by the Japan FA Open System Promotion Group of the manufacturing Science and Technology Center. The FL link protocol is intended for the FL net to be used for data exchange between various control modules.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Message Transmission"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FL-Net Sending Service",
+        "Description": "FA link protocol is a standardized by the Japan FA Open System Promotion Group of the manufacturing Science and Technology Center. The FL link protocol is intended for the FL net to be used for data exchange between various control modules.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Message Transmission"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

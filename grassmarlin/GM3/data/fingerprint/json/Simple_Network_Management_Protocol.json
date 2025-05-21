@@ -1,0 +1,22 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Simple Network Management Protocol",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of the Simple Network Management Protocol traffic.",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "display_filter": "(udp) && (dst port 161)"
+    },
+    "Payload": {
+      "@For": "default",
+      "Always": {
+        "Return": {
+          "@Confidence": "1"
+        }
+      }
+    }
+  }
+}

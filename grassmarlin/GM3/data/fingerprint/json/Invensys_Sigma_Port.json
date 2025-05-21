@@ -1,0 +1,27 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Invensys Sigma Port",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of Invensys Sigma Port traffic.",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "display_filter": "dst port 3614"
+    },
+    "Payload": {
+      "@For": "default",
+      "Always": {
+        "Return": {
+          "@Confidence": "3",
+          "Extract": {
+            "@Name": "SIGMA-PORT",
+            "@From": "CURSOR_START",
+            "@To": "CURSOR_END"
+          }
+        }
+      }
+    }
+  }
+}

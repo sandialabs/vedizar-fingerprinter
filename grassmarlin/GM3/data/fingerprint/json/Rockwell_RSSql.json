@@ -1,0 +1,79 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell RSSql",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Rockwell RSSql Transaction Manager, Compression Server, and Configuration Server traffic."
+    },
+    "Filter": [
+      {
+        "@For": "RSSql Transaction Manager",
+        "@Name": "RSSql Transaction",
+        "display_filter": "(tcp) && (dst port 400)"
+      },
+      {
+        "@For": "RSSql Compression Server",
+        "@Name": "RSSql Compression",
+        "display_filter": "(tcp) && (dst port 401)"
+      },
+      {
+        "@For": "RSSql Configuration Server",
+        "@Name": "RSSql Configuration",
+        "display_filter": "(tcp) && (dst port 402)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "RSSql Transaction Manager",
+        "Description": "Rockwell RSSql transaction that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSSql Transaction Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RSSql Compression Server",
+        "Description": "Rockwell RSSql compression server that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSSql Compression Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RSSql Configuration Server",
+        "Description": "Rockwell RSSql Configuration server that tags the source and destination ports",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSSql Configuration Server"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

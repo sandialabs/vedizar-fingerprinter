@@ -1,0 +1,189 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Rockwell RSBizWare",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of RSBizWare traffic."
+    },
+    "Filter": [
+      {
+        "@For": "RPC Production Server",
+        "@Name": "RPC Production",
+        "display_filter": "(tcp) && (dst port 4120)"
+      },
+      {
+        "@For": "RPC Server Manager",
+        "@Name": "RPC Server Manager",
+        "display_filter": "(tcp) && (dst port 4121)"
+      },
+      {
+        "@For": "RPC PlantMetrics Server",
+        "@Name": "RPC PlantMetrics",
+        "display_filter": "(tcp) && (dst port 4122)"
+      },
+      {
+        "@For": "RPC Task Manager",
+        "@Name": "RPC Task Manager",
+        "display_filter": "(tcp) && (dst port 4123)"
+      },
+      {
+        "@For": "RPC Scheduler Server",
+        "@Name": "RPC Scheduler",
+        "display_filter": "(tcp) && (dst port 4124)"
+      },
+      {
+        "@For": "RPC Scheduler CTP Server",
+        "@Name": "RPC Scheduler CTP",
+        "display_filter": "(tcp) && (dst port 4125)"
+      },
+      {
+        "@For": "HTTP Production Server",
+        "@Name": "HTTP Production",
+        "display_filter": "(tcp) && (dst port 8080)"
+      },
+      {
+        "@For": "HTTP Server Manager",
+        "@Name": "HTTP Server Manager",
+        "display_filter": "(tcp) && (dst port 8081)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "RPC Production Server",
+        "Description": "Rockwell RSBizWare Production Server payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Production Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RPC Server Manager",
+        "Description": "Rockwell RSBizWare Server Manager payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "OPERATOR",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Server Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RPC PlantMetrics Server",
+        "Description": "Rockwell RSBizWare PlantMetrics Server payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Production Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RPC Task Manager",
+        "Description": "Rockwell RSBizWare Task Manager payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "OPERATOR",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Task Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RPC Scheduler Server",
+        "Description": "Rockwell RSBizWare Scheduler Server payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Scheduler Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RPC Scheduler CTP Server",
+        "Description": "Rockwell RSBizWare Scheduler CTP Server payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Scheduler CTP Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "HTTP Production Server",
+        "Description": "Rockwell RSBizWare Production Server payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Scheduler CTP Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "HTTP Server Manager",
+        "Description": "Rockwell RSBizWare Server Manager payload that tags TCP traffic over the destination port",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "OPERATOR",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "Rockwell RSBizWare-Scheduler CTP Server"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Siemens AuD SCP",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Siemens AuD SCP traffic."
+    },
+    "Filter": {
+      "@For": "AuD SCP",
+      "@Name": "SCP",
+      "display_filter": "dst port 3820"
+    },
+    "Payload": {
+      "@For": "AuD SCP",
+      "Description": "Tags Siemens AuD SCP traffic over known destination port.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "3",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "Siemens",
+              "#text": "AuD SCP"
+            }
+          }
+        }
+      }
+    }
+  }
+}

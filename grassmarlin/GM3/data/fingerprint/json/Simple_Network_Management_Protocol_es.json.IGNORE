@@ -1,0 +1,37 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Simple Network Management Protocol",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of the Simple Network Management Protocol traffic.",
+      "Tag": "Original"
+    },
+    "Filter": {
+      "@For": "default",
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "display_filter": "ip.proto == 17"
+              }
+            },
+            {
+              "term": {
+                "display_filter": "tcp.dstport == 161 || udp.dstport == 161"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "Payload": {
+      "@For": "default",
+      "Always": {
+        "Return": {
+          "@Confidence": "1"
+        }
+      }
+    }
+  }
+}

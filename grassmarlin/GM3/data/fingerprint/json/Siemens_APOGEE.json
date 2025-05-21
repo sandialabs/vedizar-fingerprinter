@@ -1,0 +1,674 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Siemens APOGEE",
+      "Author": "Default",
+      "Description": "This fingerprint finds the version number of the device in the APOGEE network. This fingerprint finds the AEM (APOGEE Ethernet Microserver). This fingerprint finds the hardware type of the device in the APOGEE network. This fingerprint finds the hardware type of the device in the APOGEE network. This fingerprint finds the last link date of the device in the APOGEE network. This fingerprint finds the Ethernet field nael traffic. This fingerprint finds the AEM device. This fingerprint finds the AEM device. This fingerprint finds the AEM device. This fingerprint finds the AEM device. This fingerprint finds the AEM device. This fingerprint finds the License Manager. This fingerprint finds the Device Field Panel. This fingerprint finds the Device Field Panel. This fingerprint finds the Insight Async Service. This fingerprint finds the Objectivity Database 1 and 2. This fingerprint finds the Objectivity Insight 1. This fingerprint finds the AMS Service and Lock server and AEM200. This fingerprint finds Dialogic Board. This fingerprint finds the utility cast manager. This fingerprint finds the UDP BACnet"
+    },
+    "Filter": [
+      {
+        "@For": "Network-Version Number",
+        "@Name": "Version Number",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": "Network-Hardware Type",
+        "@Name": "Hardware Type",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": "Network-Panel Name",
+        "@Name": "Panel Name",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": "Network-Link Date",
+        "@Name": "Link Date",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": "Ethernet RS485 field panel",
+        "@Name": "Field Panel",
+        "display_filter": "(tcp) && (dst port 3001)"
+      },
+      {
+        "@For": "AEM Device",
+        "@Name": "Field Panel",
+        "display_filter": "(tcp) && (dst port 3002)"
+      },
+      {
+        "@For": "License Manager",
+        "@Name": "Manager",
+        "display_filter": "dst port 5099"
+      },
+      {
+        "@For": "Device Field Panel",
+        "@Name": "Field Panel",
+        "display_filter": "(tcp) && (dst port 5441)"
+      },
+      {
+        "@For": "Insight Async Service",
+        "@Name": "Async Service",
+        "display_filter": "(tcp) && (dst port 5442)"
+      },
+      {
+        "@For": "Objectivity Database 1",
+        "@Name": "Database 1",
+        "display_filter": "(tcp) && (dst port 6775)"
+      },
+      {
+        "@For": "Objectivity Database 2",
+        "@Name": "Database 2",
+        "display_filter": "(tcp) && (dst port 6888)"
+      },
+      {
+        "@For": "Objectivity Insight 1",
+        "@Name": "Insight 1",
+        "display_filter": "(tcp) && (dst port 6889)"
+      },
+      {
+        "@For": "Objectivity Insight 2",
+        "@Name": "Insight 2",
+        "display_filter": "(tcp) && (dst port 6780)"
+      },
+      {
+        "@For": "Objectivity AMS Service",
+        "@Name": "AMS Service",
+        "display_filter": "(tcp) && (dst port 6779)"
+      },
+      {
+        "@For": "Objectivity Lock Server",
+        "@Name": "Lock Server",
+        "display_filter": "(tcp) && (dst port 6780)"
+      },
+      {
+        "@For": "AEM200 Communication",
+        "@Name": "AEM200 Communication",
+        "display_filter": "(tcp) && (dst port 999)"
+      },
+      {
+        "@For": "Dialogic Board 1",
+        "@Name": "Dialogic Board 1",
+        "display_filter": "(tcp) && (dst port 12001)"
+      },
+      {
+        "@For": "Dialogic Board 2",
+        "@Name": "Dialogic Board 2",
+        "display_filter": "(tcp) && (dst port 12002)"
+      },
+      {
+        "@For": "Dialogic Board 3",
+        "@Name": "Dialogic Board 3",
+        "display_filter": "(tcp) && (dst port 12003)"
+      },
+      {
+        "@For": "Dialogic Board 4",
+        "@Name": "Dialogic Board 4",
+        "display_filter": "(tcp) && (dst port 12004)"
+      },
+      {
+        "@For": "Dialogic Board 5",
+        "@Name": "Dialogic Board 5",
+        "display_filter": "(tcp) && (dst port 12005)"
+      },
+      {
+        "@For": "Utility Cast Manager",
+        "@Name": "Manager",
+        "display_filter": "dst port 30400"
+      },
+      {
+        "@For": "BACnet Field Panels",
+        "@Name": "BACnet",
+        "display_filter": "dst port 47808"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Network-Version Number",
+        "Description": "Tags APOGEE network version number by HEX match and extracts the version number.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C56657273696F6E4E756D6265723E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "Product",
+                      "#text": "APOGEE - Network Version Number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Network-Hardware Type",
+        "Description": "Tags APOGEE network hardware type by HEX match and extracts the model type",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C4861726477617265547970653E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "Product",
+                      "#text": "APOGEE-Network Hardware Type"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Model",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END",
+                    "@MaxLength": "1024",
+                    "@Endian": "BIG",
+                    "Post": {
+                      "@Convert": "INTEGER"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Network-Panel Name",
+        "Description": "Tags APOGEE network panel name HEX match and extracts the panel name",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C50616E656C204E616D653D22"
+          },
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "22"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "Product",
+                      "#text": "APOGEE - Network Panel Name"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Panel Name: ",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END",
+                    "@MaxLength": "1024",
+                    "@Endian": "BIG",
+                    "Post": {
+                      "@Convert": "STRING"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Network-Link Date",
+        "Description": "Tags APOGEE network link date by HEX match and extracts the link date.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C4C696E6B446174653E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Offset": "0",
+              "@Reverse": "true",
+              "@NoCase": "false",
+              "@Depth": "0",
+              "@Relative": "true",
+              "@Within": "0",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN",
+                  "@Relative": "false",
+                  "@Offset": "0"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Role": "SERVER",
+                    "Detail": {
+                      "@Name": "Product",
+                      "#text": "APOGEE - Network Link Date"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Link Date:",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END",
+                    "@MaxLength": "1024",
+                    "@Endian": "BIG",
+                    "Post": {
+                      "@Convert": "INTEGER"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Ethernet RS485 field panel",
+        "Description": "Tags APOGEE field panels.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Ethernet Field Panel"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "AEM Device",
+        "Description": "Tags APOGEE AEM Device.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE AEM Device"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "License Manager",
+        "Description": "Tags APOGEE License Manager.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE License Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Device Field Panel",
+        "Description": "Tags APOGEE Device Field Panel.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Device Field Panel"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Insight Async Service",
+        "Description": "Tags APOGEE Insight Async Service.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Insight Async Service"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity Database 1",
+        "Description": "Tags APOGEE Objectivity Database 1.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity Database 1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity Database 2",
+        "Description": "Tags APOGEE Device Field Panel 2.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity Database 2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity Insight 1",
+        "Description": "Tags APOGEE Objectivity Insight 1.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity Insight 1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity Insight 2",
+        "Description": "Tags APOGEE Objectivity Insight 2.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity Insight 2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity AMS Service",
+        "Description": "Tags APOGEE Objectivity AMS Service.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity AMS Service"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Objectivity Lock Server",
+        "Description": "Tags APOGEE Objectivity Lock Server.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Objectivity Lock Server"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "AEM200 Communication",
+        "Description": "Tags APOGEE AEM200 Communication.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE AEM200 Communication"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Dialogic Board 1",
+        "Description": "Tags APOGEE Dialogic Board 1.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Dialogic Board 1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Dialogic Board 2",
+        "Description": "Tags APOGEE Dialogic Board 2.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Dialogic Board 2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Dialogic Board 3",
+        "Description": "Tags APOGEE Dialogic Board 3.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Dialogic Board 3"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Dialogic Board 4",
+        "Description": "Tags APOGEE Dialogic Board 4.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Dialogic Board 4"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Dialogic Board 5",
+        "Description": "Tags APOGEE Dialogic Board 5.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Dialogic Board"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Utility Cast Manager",
+        "Description": "Tags APOGEE Utility Cast Manager.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE Utility Cast Manager"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "BACnet Field Panels",
+        "Description": "Tags APOGEE BACnet Field Panels.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "APOGEE BACnet Field Panels"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "APOGEE",
+      "Author": "Default",
+      "Description": "This is finding the version number of the device in the APOGEE networkThis identifies a AEM (APOGEE Ethernet Microserver). This is finding the hardware type of the device in the APOGEE networkThis is finding the hardware type of the device in the APOGEE networkThis is finding the last link date of the device in the APOGEE network"
+    },
+    "Filter": [
+      {
+        "@For": " Network-Version Number",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": " device",
+        "display_filter": "src port 3001"
+      },
+      {
+        "@For": " Network-Hardware Type",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": " Network-Panel Name",
+        "display_filter": "(tcp) && (src port 5033)"
+      },
+      {
+        "@For": " Network-Link Date",
+        "display_filter": "(tcp) && (src port 5033)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " Network-Version Number",
+        "Match": {
+          "@Offset": "0",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C56657273696F6E4E756D6265723E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Detail": {
+                      "@Name": "Role",
+                      "#text": "SERVER"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Version",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " device",
+        "Match": {
+          "@Offset": "0",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "41706F676565"
+          },
+          "AndThen": {
+            "Return": {
+              "@Confidence": "3",
+              "Details": {
+                "Category": "ICS_HOST",
+                "Detail": {
+                  "@Name": "Role",
+                  "#text": "OTHER"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Network-Hardware Type",
+        "Match": {
+          "@Offset": "0",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C4861726477617265547970653E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Detail": {
+                      "@Name": "Role",
+                      "#text": "SERVER"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Model",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Network-Panel Name",
+        "Match": {
+          "@Offset": "0",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C50616E656C204E616D653D22"
+          },
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "22"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Detail": {
+                      "@Name": "Role",
+                      "#text": "SERVER"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Panel Name: ",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": " Network-Link Date",
+        "Match": {
+          "@Offset": "0",
+          "@Within": "65535",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "3C4C696E6B446174653E"
+          },
+          "AndThen": {
+            "Match": {
+              "@Relative": "true",
+              "@MoveCursors": "false",
+              "Content": {
+                "@Type": "HEX",
+                "#text": "3C"
+              },
+              "AndThen": {
+                "Anchor": {
+                  "@Cursor": "END",
+                  "@Position": "CURSOR_MAIN"
+                },
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "3",
+                  "Details": {
+                    "Category": "ICS_HOST",
+                    "Detail": {
+                      "@Name": "Role",
+                      "#text": "SERVER"
+                    }
+                  },
+                  "Extract": {
+                    "@Name": "Link Date:",
+                    "@From": "CURSOR_START",
+                    "@To": "CURSOR_END"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

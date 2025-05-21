@@ -1,0 +1,56 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Schleicher",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of Schleicher XCX 300 traffic over 20547. This fingerprint identifies evidence of Invensys Sigma Port traffic."
+    },
+    "Filter": [
+      {
+        "@For": "XCX 300",
+        "@Name": "XCX 300",
+        "display_filter": "dst port 20547"
+      },
+      {
+        "@For": "Satchwell Sigma port",
+        "@Name": "Sigma Port",
+        "display_filter": "dst port 3614"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "XCX 300",
+        "Description": "Tags destination port known to the Schleicher XCX 300 PLC.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "PLC",
+              "Detail": {
+                "@Name": "Product",
+                "#text": "XCX 300"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Satchwell Sigma port",
+        "Description": "Tags Schleicher Electric Invensys Sigma port trafifc.",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "Invensys Sigma Port"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

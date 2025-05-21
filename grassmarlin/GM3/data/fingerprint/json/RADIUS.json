@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "RADIUS",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of RADIUS services including internet authentication and accounting."
+    },
+    "Filter": [
+      {
+        "@For": "RADIUS Authentication",
+        "@Name": "Authentication",
+        "display_filter": "(udp) && (dst port 1812)"
+      },
+      {
+        "@For": "RADIUS Accounting",
+        "@Name": "Accounting",
+        "display_filter": "(udp) && (dst port 1813)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "RADIUS Authentication",
+        "Description": "Tags RADIUS authentication internet service",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Micrsoft Server Product",
+                "#text": "RADIUS-Authentication"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "RADIUS Accounting",
+        "Description": "Tags RADIUS accounting internet service.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Detail": {
+                "@Name": "Micrsoft Server Product",
+                "#text": "RADIUS - Accounting"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

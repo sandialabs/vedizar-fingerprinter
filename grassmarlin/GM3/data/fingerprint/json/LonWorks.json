@@ -1,0 +1,49 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "LonWorks",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of LonWorks traffic."
+    },
+    "Filter": [
+      {
+        "@For": "LonWorks 1",
+        "@Name": "destination.port",
+        "display_filter": "dst port 2540"
+      },
+      {
+        "@For": "LonWorks 2",
+        "@Name": "destination.port",
+        "display_filter": "dst port 2541"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "LonWorks 1",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "LonWorks"
+            }
+          }
+        }
+      },
+      {
+        "@For": "LonWorks 2",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "ICSProtocol",
+              "#text": "LonWorks"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

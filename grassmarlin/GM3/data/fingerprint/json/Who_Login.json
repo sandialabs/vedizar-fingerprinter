@@ -1,0 +1,64 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Who_Login",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of who/login against tcp/udp traffic. This is a automatic authentication performed based on privileged port numbers and distributed databases which identify \"authentication domains.\" Also the protocol maintains databases showing who's logged into the machines on a local network and the load average of the machine."
+    },
+    "Filter": [
+      {
+        "@For": "who_login",
+        "@Name": "source.port",
+        "display_filter": "src port 513"
+      },
+      {
+        "@For": "who_login",
+        "@Name": "destination.port",
+        "display_filter": "dst port 513"
+      }
+    ],
+    "Payload": {
+      "@For": "who_login",
+      "Description": "Tags version 1 type 1, WHO or LOGIN protocol over 513 tcp/udp traffic.",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Detail": {
+              "@Name": "Authentication",
+              "#text": "WHO/Login"
+            }
+          }
+        }
+      },
+      "Match": {
+        "@Offset": "0",
+        "@Reverse": "true",
+        "@NoCase": "false",
+        "@Depth": "12",
+        "@Relative": "true",
+        "@Within": "0",
+        "@MoveCursors": "true",
+        "Pattern": "1010",
+        "AndThen": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+
+            "Extract": {
+              "@Name": "Hostname",
+              "@From": "12",
+              "@To": "16",
+              "@MaxLength": "1024",
+              "@Endian": "BIG",
+              "Post": {
+                "@Convert": "STRING"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

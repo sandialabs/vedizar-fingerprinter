@@ -1,0 +1,31 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "CAMP",
+      "Author": "Default",
+      "Description": "Possible indication of command/response from CAMP. When a CAMP command is sent to another node, reponse is expected. This allows the application to determine whether a command was sucessfully completed."
+    },
+    "Filter": {
+      "@For": "Common ASCII Message Protocol",
+      "@Name": "destination.port",
+      "display_filter": "dst port 4450"
+    },
+    "Payload": {
+      "@For": "Common ASCII Message Protocol",
+      "Description": "Tags the Common ASCII Message Protocol",
+      "Always": {
+        "Return": {
+          "@Direction": "SOURCE",
+          "@Confidence": "5",
+          "Details": {
+            "Category": "ICS_HOST",
+            "Detail": {
+              "@Name": "Message Protocol",
+              "#text": "Common ASCII Message Protocol"
+            }
+          }
+        }
+      }
+    }
+  }
+}

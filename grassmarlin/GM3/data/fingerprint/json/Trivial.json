@@ -1,0 +1,57 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Trivial",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of Trivial Network Management traffic. Low confidence that it is TFTP. TFTP is often used in embedded devices."
+    },
+    "Filter": [
+      {
+        "@For": "Network Management",
+        "@Name": "TNMPV-2",
+        "display_filter": "dst port 3686"
+      },
+      {
+        "@For": "File Transfer Protocol",
+        "@Name": "FTP",
+        "display_filter": "(src port 69) && (dst port 69)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Network Management",
+        "Description": "Tags Trivial Network Management TNMPV-2",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "TNMPV-2"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "File Transfer Protocol",
+        "Description": "Tags Trivial File Transfer Protocol",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "FTP"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

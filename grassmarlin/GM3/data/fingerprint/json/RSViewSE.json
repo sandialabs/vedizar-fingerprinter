@@ -1,0 +1,47 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "RSViewSE",
+      "Author": "Default",
+      "Description": "This fingerprint looks for the evidence of RSviewSE HMI Server traffic.This fingerprint looks for the evidence of RSViewSE Server Framework traffic."
+    },
+    "Filter": [
+      {
+        "@For": " HMI Server",
+        "display_filter": "src port 7720"
+      },
+      {
+        "@For": " Server Framework",
+        "display_filter": "src port 7721"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": " HMI Server",
+        "Always": {
+          "Return": {
+            "@Confidence": "3",
+            "Extract": {
+              "@Name": "RSVIEWSE-HMI",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      },
+      {
+        "@For": " Server Framework",
+        "Always": {
+          "Return": {
+            "@Confidence": "2",
+            "Extract": {
+              "@Name": "RSVIEWSE-FRAM",
+              "@From": "CURSOR_START",
+              "@To": "CURSOR_END"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

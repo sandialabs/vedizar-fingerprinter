@@ -1,0 +1,149 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "EtherNetIP",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of EtherNetIP traffic.",
+      "Tag": "ETHERNETIP"
+    },
+    "Filter": [
+      {
+        "@For": "EtherNetIP UDP List Identity Response",
+        "@Name": "UDP List",
+        "display_filter": "(udp) && (src port 44818)"
+      },
+      {
+        "@For": "Replier/Requester UDP",
+        "@Name": "Dst",
+        "display_filter": "dst port 44818"
+      },
+      {
+        "@For": "Replier/Requester UDP",
+        "@Name": "Src",
+        "display_filter": "src port 44818"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Replier/Requester UDP",
+        "Description": "Tags UDP replier/requester EtherNetIP traffic.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ETHERNETIP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "EtherNetIP UDP List Identity Response",
+        "Description": "Tags UDP identity EtherNetIP response traffic.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Category": "ICS_HOST",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "ETHERNETIP"
+              }
+            }
+          }
+        },
+        "Match": {
+          "@Offset": "24",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "true",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "01000C00"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+
+              "Extract": [
+                {
+                  "@Name": "ENIP Vendor",
+                  "@From": "48",
+                  "@To": "50",
+                  "@MaxLength": "1024",
+                  "@Endian": "LITTLE",
+                  "Post": {
+                    "@Lookup": "ENIPVENDOR"
+                  }
+                },
+                {
+                  "@Name": "ENIP Device Type",
+                  "@From": "50",
+                  "@To": "52",
+                  "@MaxLength": "1024",
+                  "@Endian": "LITTLE",
+                  "Post": {
+                    "@Lookup": "ENIPDEVICE"
+                  }
+                },
+                {
+                  "@Name": "ENIP Product Code",
+                  "@From": "52",
+                  "@To": "54",
+                  "@MaxLength": "1024",
+                  "@Endian": "LITTLE",
+                  "Post": {
+                    "@Convert": "INTEGER"
+                  }
+                },
+                {
+                  "@Name": "ENIP Serial Number",
+                  "@From": "58",
+                  "@To": "62",
+                  "@MaxLength": "1024",
+                  "@Endian": "LITTLE",
+                  "Post": {
+                    "@Convert": "HEX"
+                  }
+                }
+              ]
+            },
+            "ByteJump": {
+              "@PostOffset": "63",
+              "@Relative": "false",
+              "@Endian": "BIG",
+              "@Offset": "62",
+              "@Bytes": "1",
+              "AndThen": {
+                "Return": {
+                  "@Direction": "SOURCE",
+                  "@Confidence": "5",
+
+                  "Extract": {
+                    "@Name": "Model",
+                    "@From": "63",
+                    "@To": "CURSOR_MAIN",
+                    "@MaxLength": "1024",
+                    "@Endian": "BIG",
+                    "Post": {
+                      "@Convert": "STRING"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

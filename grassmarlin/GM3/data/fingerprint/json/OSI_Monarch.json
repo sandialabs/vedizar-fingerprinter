@@ -1,0 +1,112 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "OSI Monarch",
+      "Author": "Default",
+      "Description": "Identifies the Application layer header for the FEPSI protocol (version 2) from a client. This protocol is used within the OSI Monarch SCADA system. This fingerprint looks for the start byte value, the function code, and version number within their dedicated position in the payload.\n\nThe second payload looks for the start byte value, server response byte value, the function code, and version number within their dedicated position in the payload.\n\nThe third payload identifies the Network header for the Fepcontrol protocol (header type 1). This protocol is used within the OSI Monarch SCADA system. This fingerprint looks for the start byte, the header type, the Application ID, and the Control Type values within their dedicated positions in the payload."
+    },
+    "Filter": [
+      {
+        "@For": "OSI Monarch FEPSI Client",
+        "@Name": "FEPSI Client",
+        "display_filter": "(tcp) && (dst port 11999)"
+      },
+      {
+        "@For": "OSI Monarch FEPSI Server",
+        "@Name": "FEPSI Server",
+        "display_filter": "(tcp) && (src port 11999)"
+      },
+      {
+        "@For": "OSI Monarch Fepcontrol Client",
+        "@Name": "Fepcontrol Client",
+        "display_filter": "(tcp) && (dst port 16002)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "OSI Monarch FEPSI Client",
+        "Description": "Identifies the Application layer header for the FEPSI protocol (version 2) from a client. This protocol is used within the OSI Monarch SCADA system.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Pattern": "\\x03(.{7}[\\x00\\x10\\x20\\x30\\x40]{1})\\x02",
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "ICS_HOST",
+                "Role": "CLIENT",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "OSI Monarch FEPSI Client"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "OSI Monarch FEPSI Server",
+        "Description": "Identifies the Application layer header for the FEPSI protocol (version 2) from a server. This protocol is used within the OSI Monarch SCADA system.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Pattern": "\\x03(.{2}\\x03)(.{4}[\\x00\\x10\\x20\\x30\\x40]{1})\\x02",
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "ICS_HOST",
+                "Role": "SERVER",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "OSI Monarch FEPSI Server"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "OSI Monarch Fepcontrol Client",
+        "Description": "Identifies the Network header for the Fepcontrol protocol (header type 1). This protocol is used within the OSI Monarch SCADA system.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Pattern": "\\x03(.{11}\\x01)(.{16}[\\x00\\x01\\x02\\x03])(.{1}[\\s3-7e-l]{1,20})",
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "ICS_HOST",
+                "Role": "CLIENT",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "OSI Monarch Fepcontrol Client"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

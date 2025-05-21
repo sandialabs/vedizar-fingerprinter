@@ -1,0 +1,85 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "DNP3",
+      "Author": "Default",
+      "Description": "Looks for evidence of DNP3 traffic on src/des on port 20000"
+    },
+    "Filter": [
+      {
+        "@For": "DNP3_Master",
+        "@Name": "Master",
+        "display_filter": "dst port 20000"
+      },
+      {
+        "@For": "DNP3_Slave",
+        "@Name": "Slave",
+        "display_filter": "src port 20000"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "DNP3_Master",
+        "Description": "Finds a DNP3 Master device by matching the DNP3 header and attaches details to the DESTINATION in the frame.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "false",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0564"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "4",
+              "Details": {
+                "Category": "MTU",
+                "Role": "MASTER",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "DNP3"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DNP3_Slave",
+        "Description": "Finds a DNP3 Slave device by matching the DNP3 header and attaches details to the SOURCE in the frame.",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "false",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "0564"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "4",
+              "Details": {
+                "Category": "IED",
+                "Role": "SLAVE",
+                "Detail": {
+                  "@Name": "ICSProtocol",
+                  "#text": "DNP3"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

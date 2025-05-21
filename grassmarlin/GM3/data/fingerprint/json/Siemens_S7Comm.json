@@ -1,0 +1,85 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Siemens S7Comm",
+      "Author": "Default",
+      "Description": "ISO 8073 COTP 020f80 protocol usually rides on port 102. The first byte is always x32 as protocol identifier which is the protocol ID 020f80 32"
+    },
+    "Filter": [
+      {
+        "@For": "S7Comm Master",
+        "@Name": "Master",
+        "display_filter":  "(tcp) && (dst port 102) "
+      },
+      {
+        "@For": "S7Comm Slave",
+        "@Name": "Slave",
+        "display_filter":  "(tcp) && (src port 102) "
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "S7Comm Master",
+        "Description": "Payload matches on the ISO8073/X.224 COTP HEX pattern",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "02F08032"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "MTU",
+                "Role": "MASTER",
+                "Detail": {
+                  "@Name": "S7Communication",
+                  "#text": "COPT"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "S7Comm Slave",
+        "Description": "Payload matches on the ISO8073/X.224 COTP HEX pattern",
+        "Match": {
+          "@Offset": "0",
+          "@Reverse": "true",
+          "@NoCase": "false",
+          "@Depth": "0",
+          "@Relative": "false",
+          "@Within": "0",
+          "@MoveCursors": "true",
+          "Content": {
+            "@Type": "HEX",
+            "#text": "02F08032"
+          },
+          "AndThen": {
+            "Return": {
+              "@Direction": "SOURCE",
+              "@Confidence": "5",
+              "Details": {
+                "Category": "PLC",
+                "Role": "SLAVE",
+                "Detail": {
+                  "@Name": "S7Communication",
+                  "#text": "COPT"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

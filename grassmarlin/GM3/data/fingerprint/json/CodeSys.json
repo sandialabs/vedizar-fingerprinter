@@ -1,0 +1,55 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "CodeSys",
+      "Author": "Default",
+      "Description": "This fingerprint looks for evidence of CodeSys traffic."
+    },
+    "Filter": [
+      {
+        "@For": "Gateway Server 1",
+        "@Name": "Dst 2455",
+        "display_filter": "(tcp) && (dst port 2455)"
+      },
+      {
+        "@For": "Gateway Server 2",
+        "@Name": "Dst 1200",
+        "display_filter": "(tcp) && (dst port 1200)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Gateway Server 1",
+        "Description": "Gateway Server for industrial devices running CodeSys programming interface",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "CodeSys"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Gateway Server 2",
+        "Description": "Gateway Server for industrial devices running CodeSys programming interface",
+        "Always": {
+          "Return": {
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "ICSProtocol",
+                "#text": "CodeSys"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

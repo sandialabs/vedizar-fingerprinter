@@ -1,0 +1,165 @@
+{
+  "Fingerprint": {
+    "Header": {
+      "Name": "Domain Controller",
+      "Author": "Default",
+      "Description": "This fingerprint identifies evidence of domain controller communication including client computers, authentication, and active directory."
+    },
+    "Filter": [
+      {
+        "@For": "Domain Controller",
+        "@Name": "Controller Traffic",
+        "display_filter": "dst port 135"
+      },
+      {
+        "@For": "Kerberos",
+        "@Name": "Authentication",
+        "display_filter": "(udp) && (dst port 88)"
+      },
+      {
+        "@For": "File Replication Service",
+        "@Name": "UDP File Replication",
+        "display_filter": "(udp) && (dst port 138)"
+      },
+      {
+        "@For": "File Replication Service",
+        "@Name": "TCP File Replication",
+        "display_filter": "(tcp) && (dst port 139)"
+      },
+      {
+        "@For": "Light Directory Application Protocol",
+        "@Name": "LDAP Query",
+        "display_filter": "dst port 389"
+      },
+      {
+        "@For": "Light Directory Application Protocol",
+        "@Name": "LDAP SSL",
+        "display_filter": "(tcp) && (dst port 636)"
+      },
+      {
+        "@For": "Light Directory Application Protocol",
+        "@Name": "LDAP Global Catalog",
+        "display_filter": "(tcp) && (dst port 3268)"
+      },
+      {
+        "@For": "Light Directory Application Protocol",
+        "@Name": "LDAP Global Catalog SSL",
+        "display_filter": "(tcp) && (dst port 3269)"
+      },
+      {
+        "@For": "FRS-RPC",
+        "@Name": "Microsoft FRS-RPC service",
+        "display_filter": "(tcp) && (dst port 53248)"
+      },
+      {
+        "@For": "DFS-R",
+        "@Name": "Microsoft DFS Replication Service",
+        "display_filter": "(tcp) && (dst port 5722)"
+      }
+    ],
+    "Payload": [
+      {
+        "@For": "Domain Controller",
+        "Description": "Identifies domain contoller to domain controller traffic.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "Authentication"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Kerberos",
+        "Description": "Identifies kerberos authentication traffic.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "Kerberos"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "File Replication Service",
+        "Description": "File replication service between domain controllers.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "File Replication Service"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "Light Directory Application Protocol",
+        "Description": "LDAP to handle normal queries from client computers to domain controllers.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "LDAP"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "FRS-RPC",
+        "Description": "Microsoft technology that replicates files and folders stored in the SYSVOL shared folder on domain controllers and distributed shared folders.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "FRS-RPC"
+              }
+            }
+          }
+        }
+      },
+      {
+        "@For": "DFS-R",
+        "Description": "Microsoft DFS replication service that shares folders that can be kept synchronized by using methods other than FRS.",
+        "Always": {
+          "Return": {
+            "@Direction": "SOURCE",
+            "@Confidence": "5",
+            "Details": {
+              "Role": "SERVER",
+              "Detail": {
+                "@Name": "Service",
+                "#text": "DFS-R"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
