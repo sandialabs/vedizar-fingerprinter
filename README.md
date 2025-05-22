@@ -9,7 +9,7 @@ based on Tshark's packet parsing. It saves the result into Elasticsearch.
 - python >= 3.8
 - tcpdump
 - Tshark
-- running Elasticsearch instance, be default at http://localhost:9200
+- running Elasticsearch instance, by default at http://localhost:9200
 
 
 # Install Instructions:
@@ -22,7 +22,7 @@ docker build -t fingerprinter:latest .
 
 # Run instructions
 
-To analyze all pcaps in /opt/pcaps every 300 seconds, and save fingerprints to Elasticsearch at http://lcoalhost:9200
+To analyze all pcaps in `/opt/pcaps` every 300 seconds, and save fingerprints to Elasticsearch at http://localhost:9200
 - with python: `python3 run_fingerprinter.py --pcapdir=/opt/pcaps --period 300 --es-url="http://localhost:9200"`
 - with docker: `docker run -v /opt/pcaps:/opt/pcaps fingerprinter:latest --pcapdir=/opt/pcaps --period 300 --es-url="http://elasticsearch:9200"`
   - for docker, you must mount in the directory containing pcaps into the container, and be sure to point to the appropriate elasticsearch URL.
