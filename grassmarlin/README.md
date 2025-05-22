@@ -1,7 +1,7 @@
 # SNL customizations
 * in the `GM3/data/finterprint` folder, added a `json` folder
 * the `.json` files are directory converted from the .xml fingerpints
-* the `*_es.json` files have been further modified to make the filteres ES queries by `GM3/data/fingerprint/json/to_es.py`
+* the `*_es.json` files have been further modified to make the filters ES queries by `GM3/data/fingerprint/json/to_es.py`
 * `GM3/data/fingerprint/json/fingerprint_packets.py` runs the `*_es.json` fingerprints agains the `packets-*` data in Elasticsearch, and writes the results back to the `fingerprints` index.
 
 # GRASSMARLIN
